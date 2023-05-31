@@ -9,7 +9,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from .. import State
-from ..ExpenseDashboard import ExpenseDashboard
+from ..DocumentDashboard import DocumentDashboard
 from ..SummaryPlots import SummaryPlots
 
 class Main(MainTemplate):
@@ -30,7 +30,7 @@ class Main(MainTemplate):
 
   def switch_to_dashboard(self, status):
     self.content_panel.clear()
-    self.content_panel.add_component(ExpenseDashboard(status=status))
+    self.content_panel.add_component(DocumentDashboard(status=status))
   
   def pendingappr_btn_click(self, **event_args):
     self.switch_to_dashboard('pending')

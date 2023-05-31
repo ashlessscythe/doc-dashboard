@@ -9,7 +9,7 @@ components:
   components:
   - type: Label
     properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Expense Summary, font_size: null, font: '', spacing_above: small,
+      visible: true, text: Document Summary, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_2
@@ -64,7 +64,7 @@ components:
     - {property: text, code: 'self.item[''created''].strftime(''%d/%m/%y'')'}
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: 'Amount:', font_size: null, font: '', spacing_above: small,
+      visible: true, text: Dept, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
       underline: false, icon: ''}
     name: label_4
@@ -74,13 +74,13 @@ components:
       visible: true, text: '', font_size: 16, font: '', spacing_above: small, icon_align: left,
       spacing_below: small, italic: false, background: '', bold: false, underline: false,
       icon: ''}
-    name: amount_label
+    name: dept_label
     layout_properties: {grid_position: 'HBFEXL,IJPPYZ'}
     data_bindings:
-    - {property: text, code: 'f"£{self.item[''amount'']}"'}
+    - {property: text, code: 'self.item[''dept'']'}
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: 'Merchant:', font_size: null, font: '', spacing_above: small,
+      visible: true, text: 'Issue:', font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
       underline: false, icon: ''}
     name: label_7
@@ -90,10 +90,9 @@ components:
       visible: true, text: '', font_size: 16, font: '', spacing_above: small, icon_align: left,
       spacing_below: small, italic: false, background: '', bold: false, underline: false,
       icon: ''}
-    name: merchant_label
+    name: issue_label
     layout_properties: {grid_position: 'EUGMFO,ANFERM'}
-    data_bindings:
-    - {property: text, code: 'self.item[''merchant'']'}
+    data_bindings: []
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'Rejection Reason:', font_size: null, font: '', spacing_above: small,
@@ -112,7 +111,7 @@ components:
     - {property: text, code: 'self.item[''reject_message'']'}
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: 'Receipt/Proof:', font_size: null, font: '', spacing_above: small,
+      visible: true, text: 'Document/Proof:', font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
       underline: false, icon: ''}
     name: label_6

@@ -9,7 +9,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from datetime import datetime
 from ... import State
-from ...ExpenseSummary import ExpenseSummary
+from ...DocumentSummary import DocumentSummary
 from ...RejectComment import RejectComment
 
 class RowTemplate1(RowTemplate1Template):
@@ -50,7 +50,7 @@ class RowTemplate1(RowTemplate1Template):
     self.refresh_data_bindings()
 
   def description_link_click(self, **event_args):
-    alert(content=ExpenseSummary(item=self.item, status=self.item['status']), large=True)
+    alert(content=DocumentSummary(item=self.item, status=self.item['status']), large=True)
 
   def form_refreshing_data_bindings(self, **event_args):
     """This method is called when refreshing_data_bindings is called"""

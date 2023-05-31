@@ -25,7 +25,7 @@ components:
     components:
     - type: Label
       properties: {role: title, align: center, tooltip: '', border: '', foreground: '',
-        visible: true, text: Log in to the Expense Approval App, font_size: 25, font: '',
+        visible: true, text: Log in to the Document Tracking, font_size: 25, font: '',
         spacing_above: medium, icon_align: left, spacing_below: small, italic: false,
         background: '', bold: false, underline: false, icon: ''}
       name: label_1

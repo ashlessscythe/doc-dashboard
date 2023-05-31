@@ -16,8 +16,12 @@ services:
 startup: {type: form, module: Login}
 package_name: Rally_theme
 allow_embedding: false
-name: Expense Approval App (2)
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+name: Document Tracker
+runtime_options:
+  version: 2
+  client_version: '3'
+  server_version: python3-full
+  server_spec: {base: python310-minimal}
 startup_form: null
 native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap"
     rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
@@ -36,10 +40,10 @@ db_schema:
     - name: created
       admin_ui: {width: 200}
       type: datetime
-    - name: amount
+    - name: dept
       admin_ui: {width: 200}
       type: number
-    - name: merchant
+    - name: isssue
       admin_ui: {width: 200}
       type: string
     - name: attachment

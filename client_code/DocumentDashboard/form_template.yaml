@@ -13,19 +13,19 @@ components:
     layout_properties: {grid_position: 'JLJYIQ,NQVVHX'}
   - type: Label
     properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Expense Request Dashboard, font_size: null, font: '', spacing_above: none,
+      visible: true, text: Document Dashboard, font_size: null, font: '', spacing_above: none,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_1
     layout_properties: {grid_position: 'JPQUTS,WCYHSK'}
   - type: Button
     properties: {role: outlined, align: right, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: New Request, font_size: null, font: '',
+      foreground: '', visible: true, text: New Document, font_size: null, font: '',
       spacing_above: small, icon_align: left, spacing_below: medium, italic: false,
       background: '', bold: false, underline: false, icon: 'fa:plus-circle'}
     name: new_expense
     layout_properties: {grid_position: 'JPQUTS,IQXSGG'}
-    event_bindings: {click: new_expense_click}
+    event_bindings: {click: new_document_click}
 - type: DataGrid
   properties:
     role: null
@@ -36,7 +36,7 @@ components:
       width: '', expand: false}
     - {id: WVUYGG, title: Created, data_key: created, $$hashKey: 'object:1336', width: 93,
       expand: false}
-    - {id: RXABXA, title: Amount, data_key: amount, $$hashKey: 'object:1371', width: 82,
+    - {id: RXABXA, title: Dept, data_key: amount, $$hashKey: 'object:1371', width: 82,
       expand: false}
     - {id: AXFMLE, title: Actions, data_key: column_1, $$hashKey: 'object:77407',
       width: 240, expand: false}
@@ -57,7 +57,7 @@ components:
     grid_position: ULZMAH,UCPCJQ
   components:
   - type: RepeatingPanel
-    properties: {spacing_above: none, spacing_below: none, item_template: ExpenseDashboard.RowTemplate1}
+    properties: {spacing_above: none, spacing_below: none, item_template: DocumentDashboard.RowTemplate1}
     name: rp
     layout_properties: {}
 is_package: true
