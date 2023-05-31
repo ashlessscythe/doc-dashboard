@@ -1,0 +1,85 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components: []
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: column_panel_2
+  layout_properties: {slot: left-nav}
+  components:
+  - type: Button
+    properties: {role: outlined, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Log out, font_size: 12, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:arrow-left'}
+    name: log_out
+    layout_properties: {grid_position: 'FTKWEF,HEDJQF'}
+    event_bindings: {click: log_out_click}
+  - type: Label
+    properties: {role: null, align: center, tooltip: '', border: '', foreground: 'theme:Primary',
+      visible: true, text: • • • • •, font_size: 20, font: '', spacing_above: small,
+      icon_align: left, spacing_below: none, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: separator_label_1
+    layout_properties: {grid_position: 'YLIGND,DRYZQL', full_width_row: false}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: All expenses, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: allexp_btn
+    layout_properties: {grid_position: 'DSXYJY,BEEDTH'}
+    event_bindings: {click: allexp_btn_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Pending approval, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: pendingappr_btn
+    layout_properties: {grid_position: 'KGQVYZ,JSXRHI'}
+    event_bindings: {click: pendingappr_btn_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Pending reimbursement, font_size: null,
+      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: pendingreimb_btn
+    layout_properties: {grid_position: 'XJTLPN,KNDNGJ'}
+    event_bindings: {click: pendingreimb_btn_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Past expenses, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: pastexp_btn
+    layout_properties: {grid_position: 'MTXKRC,YDJIJR'}
+    event_bindings: {click: pastexp_btn_click}
+  - type: Label
+    properties: {role: null, align: center, tooltip: '', border: '', foreground: 'theme:Primary',
+      visible: false, text: • • • • •, font_size: 20, font: '', spacing_above: small,
+      icon_align: left, spacing_below: none, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: separator_label_2
+    layout_properties: {grid_position: 'HUMMWM,UJDAWM', full_width_row: false, slot: default}
+    data_bindings: []
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: false,
+      foreground: '', visible: false, text: Summary, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: summary_btn
+    layout_properties: {grid_position: 'UMKXSZ,WZFWMV'}
+    event_bindings: {click: summary_btn_click}
+- type: Image
+  properties: {role: null, vertical_align: center, height: '96', tooltip: '', border: '',
+    foreground: '', visible: true, display_mode: shrink_to_fit, spacing_above: small,
+    source: 'data:image/png;base64,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',
+    spacing_below: small, background: '', horizontal_align: center}
+  name: image_1
+  layout_properties: {slot: logo}

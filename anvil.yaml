@@ -1,0 +1,86 @@
+dependencies: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {enable_v2: true}
+  server_config: {}
+- source: /runtime/services/anvil/users.yml
+  client_config: {allow_signup: true, enable_automatically: true, use_email: true,
+    confirm_email: true, use_google: true}
+  server_config: {user_table: users}
+- source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/anvil/email.yml
+  client_config: {}
+  server_config: {}
+startup: {type: form, module: Login}
+package_name: Rally_theme
+allow_embedding: false
+name: Expense Approval App (2)
+runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+startup_form: null
+native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap"
+    rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
+db_schema:
+  expenses:
+    title: expenses
+    client: none
+    server: full
+    columns:
+    - name: status
+      admin_ui: {width: 200}
+      type: string
+    - name: description
+      admin_ui: {width: 200}
+      type: string
+    - name: created
+      admin_ui: {width: 200}
+      type: datetime
+    - name: amount
+      admin_ui: {width: 200}
+      type: number
+    - name: merchant
+      admin_ui: {width: 200}
+      type: string
+    - name: attachment
+      admin_ui: {width: 200}
+      type: media
+    - name: submitted_by
+      admin_ui: {width: 200}
+      type: link_single
+      target: users
+    - name: reject_message
+      admin_ui: {width: 200}
+      type: string
+  users:
+    title: Users
+    client: none
+    server: full
+    columns:
+    - name: email
+      admin_ui: {width: 200}
+      type: string
+    - name: enabled
+      admin_ui: {width: 200}
+      type: bool
+    - name: last_login
+      admin_ui: {width: 200}
+      type: datetime
+    - name: password_hash
+      admin_ui: {width: 200}
+      type: string
+    - name: n_password_failures
+      admin_ui: {width: 200}
+      type: number
+    - name: confirmed_email
+      admin_ui: {width: 200}
+      type: bool
+    - name: signed_up
+      admin_ui: {width: 200}
+      type: datetime
+    - name: email_confirmation_key
+      admin_ui: {width: 200}
+      type: string
+    - name: role
+      admin_ui: {width: 200}
+      type: string

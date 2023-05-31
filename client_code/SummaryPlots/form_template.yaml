@@ -1,0 +1,38 @@
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{"YRMSWQ":30,"NOKEZN":30,"ZFEDVE":40,"OGBSCG":20}'}
+  name: column_panel_1
+  layout_properties: {grid_position: 'FXGQKI,POAUAO'}
+  components:
+  - type: Label
+    properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Summary, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_1
+    layout_properties: {grid_position: 'DYJTGX,ZFEDVE'}
+  - type: Button
+    properties: {role: outlined, align: right, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Download as pdf, font_size: null, font: '',
+      spacing_above: medium, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: 'fa:download'}
+    name: download_summ_btn
+    layout_properties: {grid_position: 'DYJTGX,OGBSCG'}
+    event_bindings: {click: download_summ_btn_click}
+  - type: Plot
+    properties: {}
+    name: plot_1
+    layout_properties: {grid_position: 'QROHFF,YRMSWQ'}
+  - type: Plot
+    properties: {}
+    name: plot_2
+    layout_properties: {grid_position: 'QROHFF,NOKEZN'}
+  - type: Plot
+    properties: {}
+    name: plot_3
+    layout_properties: {grid_position: 'HMDGYK,LIASHC'}
+    event_bindings: {}
+is_package: true

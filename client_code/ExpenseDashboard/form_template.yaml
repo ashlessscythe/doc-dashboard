@@ -1,0 +1,63 @@
+container: {type: ColumnPanel}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{"WCYHSK":35,"IQXSGG":25}'}
+  name: column_panel_1_copy
+  layout_properties:
+    col_widths: {}
+    grid_position: YOZBQW,QWOVTW
+  components:
+  - type: Spacer
+    properties: {height: 22}
+    name: spacer_1
+    layout_properties: {grid_position: 'JLJYIQ,NQVVHX'}
+  - type: Label
+    properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Expense Request Dashboard, font_size: null, font: '', spacing_above: none,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_1
+    layout_properties: {grid_position: 'JPQUTS,WCYHSK'}
+  - type: Button
+    properties: {role: outlined, align: right, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: New Request, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: medium, italic: false,
+      background: '', bold: false, underline: false, icon: 'fa:plus-circle'}
+    name: new_expense
+    layout_properties: {grid_position: 'JPQUTS,IQXSGG'}
+    event_bindings: {click: new_expense_click}
+- type: DataGrid
+  properties:
+    role: null
+    columns:
+    - {id: QWJODR, title: Status, data_key: status, $$hashKey: 'object:1334', width: 100,
+      expand: false}
+    - {id: RBXODV, title: Description, data_key: description, $$hashKey: 'object:1335',
+      width: '', expand: false}
+    - {id: WVUYGG, title: Created, data_key: created, $$hashKey: 'object:1336', width: 93,
+      expand: false}
+    - {id: RXABXA, title: Amount, data_key: amount, $$hashKey: 'object:1371', width: 82,
+      expand: false}
+    - {id: AXFMLE, title: Actions, data_key: column_1, $$hashKey: 'object:77407',
+      width: 240, expand: false}
+    auto_header: true
+    tooltip: ''
+    border: ''
+    foreground: ''
+    rows_per_page: 10
+    visible: true
+    wrap_on: never
+    show_page_controls: true
+    spacing_above: small
+    spacing_below: small
+    background: ''
+  name: data_view
+  layout_properties:
+    col_widths: {}
+    grid_position: ULZMAH,UCPCJQ
+  components:
+  - type: RepeatingPanel
+    properties: {spacing_above: none, spacing_below: none, item_template: ExpenseDashboard.RowTemplate1}
+    name: rp
+    layout_properties: {}
+is_package: true
