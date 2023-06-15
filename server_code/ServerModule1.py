@@ -19,21 +19,21 @@ def get_user_expenses(status=None):
   return app_tables.expenses.search(tables.order_by('created', ascending=False), **d)
 
 @anvil.server.callable(require_user=True)
-def add_expense(expense_dict):
-  app_tables.expenses.add_row(created=datetime.now(), status="pending", submitted_by=anvil.users.get_user(), **expense_dict)
+def add_document(document_dict):
+  app_tables.expenses.add_row(created=datetime.now(), status="pending", submitted_by=anvil.users.get_user(), **document_dict)
 
 def is_admin(user):
   return user['role'] == 'admin'
 
 @anvil.server.background_task
 def send_email(user, message):
-  anvil.email.send(to=user, from_name="Expenses App", subject="Your expense has been updated", html=message)
+  anvil.email.send(to=user, from_name="Documents App", subject="Your document has been updated", html=message)
 
 @anvil.server.callable(require_user=is_admin)
 def change_status(row, status):
   old_status = row['status']
   user = row['submitted_by']['email']
-  message = f"<p>Hi, {user},</p><p>The status of your expense ('{row['description']}') changed from <b>{old_status}</b> to <b>{status}</b>.</p><p>Visit the <a href={anvil.server.get_app_origin()}>app</a> to learn more details.</p>"
+  message = f"<p>Hi, {user},</p><p>The status of your document ('{row['description']}') changed from <b>{old_status}</b> to <b>{status}</b>.</p><p>Visit the <a href={anvil.server.get_app_origin()}>app</a> to learn more details.</p>"
   row.update(status=status)
   anvil.server.launch_background_task('send_email', user=user, message=message)
 
@@ -44,7 +44,7 @@ def reject(row, message):
 
 @anvil.server.callable(require_user=is_admin)
 def get_status_data():
-  status_data = [x['status'] for x in app_tables.expenses.search()]
+  status_data = [x['status'] for x in app_tables.documents.search()]
   labels = list(set(status_data))
   values = []
   for l in labels:

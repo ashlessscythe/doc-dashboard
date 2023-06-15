@@ -26,36 +26,6 @@ startup_form: null
 native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap"
     rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
 db_schema:
-  expenses:
-    title: expenses
-    client: none
-    server: full
-    columns:
-    - name: status
-      admin_ui: {width: 200}
-      type: string
-    - name: description
-      admin_ui: {width: 200}
-      type: string
-    - name: created
-      admin_ui: {width: 200}
-      type: datetime
-    - name: dept
-      admin_ui: {width: 200}
-      type: number
-    - name: isssue
-      admin_ui: {width: 200}
-      type: string
-    - name: attachment
-      admin_ui: {width: 200}
-      type: media
-    - name: submitted_by
-      admin_ui: {width: 200}
-      type: link_single
-      target: users
-    - name: reject_message
-      admin_ui: {width: 200}
-      type: string
   users:
     title: Users
     client: none
@@ -86,5 +56,35 @@ db_schema:
       admin_ui: {width: 200}
       type: string
     - name: role
+      admin_ui: {width: 200}
+      type: string
+  documents:
+    title: documents
+    client: none
+    server: full
+    columns:
+    - name: status
+      admin_ui: {width: 200}
+      type: string
+    - name: description
+      admin_ui: {width: 200}
+      type: string
+    - name: created
+      admin_ui: {width: 200}
+      type: datetime
+    - name: dept
+      admin_ui: {width: 200}
+      type: number
+    - name: isssue
+      admin_ui: {width: 200}
+      type: string
+    - name: attachment
+      admin_ui: {width: 200}
+      type: media
+    - name: submitted_by
+      admin_ui: {width: 200}
+      type: link_single
+      target: users
+    - name: reject_message
       admin_ui: {width: 200}
       type: string

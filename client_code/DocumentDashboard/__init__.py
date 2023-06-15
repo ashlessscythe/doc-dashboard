@@ -17,14 +17,14 @@ class DocumentDashboard(DocumentDashboardTemplate):
 
     if State.user['role'] != 'admin':
       self.data_view.columns = self.data_view.columns[:-1]
-    self.rp.items = anvil.server.call('get_user_expenses', status)
+    self.rp.items = anvil.server.call('get_user_documents', status)
 
   def new_document_click(self, **event_args):
     """This method is called when the button is clicked"""
     expense = {}
     if alert(AddDocument(item=expense), large=True, buttons=None):
-      anvil.server.call('add_expense', expense)
-      self.rp.items = anvil.server.call('get_user_expenses')
+      anvil.server.call('add_document', expense)
+      self.rp.items = anvil.server.call('get_user_documents')
 
 
 
