@@ -23,16 +23,16 @@ class RowTemplate1(RowTemplate1Template):
 
   def set_styling(self):
     if self.item['status'] == 'pending':
-      self.approve.visible, self.reject.visible, self.followup.visible = True, True, False
+      self.approve.visible, self.reject.visible, self.followup.visible = True, True, True
       self.status_label.background = '#D6BA58'
     elif self.item['status'] == 'approved':
-      self.approve.visible, self.reject.visible, self.followup.visible = False, False, True
-      self.status_label.background = '#1EB980'
-    elif self.item['status'] == 'rejected':
       self.approve.visible, self.reject.visible, self.followup.visible = False, False, False
+      self.status_label.background = '#1EB980'
+    elif self.item['status'] == 'followup':
+      self.approve.visible, self.reject.visible, self.followup.visible = True, True, False
       self.status_label.background = '#D64D47'
     else:
-      self.approve.visible, self.reject.visible, self.followup.visible = False, False, False
+      self.approve.visible, self.reject.visible, self.followup.visible = False, False, True
       self.status_label.background = '#78C0E0'
   
   def approve_click(self, **event_args):
@@ -41,12 +41,14 @@ class RowTemplate1(RowTemplate1Template):
     
   def reject_click(self, **event_args):
     msg = {}
-    if alert(RejectComment(item=msg), large=True, buttons=[("Save", True), ("Cancel", False)]):
+    if alert(_RejectComment(item=msg), large=True, buttons=[("Save", True), ("Cancel", False)]):
       anvil.server.call('reject', self.item, msg['msg'])
     self.refresh_data_bindings()
 
   def followup_click(self, **event_args):
-    anvil.server.call('change_status', self.item, 'paid')
+    msg = {}
+    if alert(_FollowupComment(item=msg), large=True, buttons=[("Save", True), ("Cancel", False)]):
+      anvil.server.call('change_status', self.item, msg['followup'])
     self.refresh_data_bindings()
 
   def description_link_click(self, **event_args):

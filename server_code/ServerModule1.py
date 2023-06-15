@@ -41,7 +41,12 @@ def change_status(row, status):
 @anvil.server.callable(require_user=is_admin)
 def reject(row, message):
   change_status(row, 'rejected')
-  row.update(reject_message=message)
+  row.update(status_change_message=message)
+
+@anvil.server.callable(require_user=is_admin)
+def followup(row, message):
+  change_status(row, 'followup')
+  row.update(status_change_message=message)
 
 @anvil.server.callable(require_user=is_admin)
 def get_status_data():
