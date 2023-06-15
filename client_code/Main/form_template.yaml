@@ -33,33 +33,33 @@ components:
       foreground: '', visible: true, text: All documents, font_size: null, font: '',
       spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
-    name: allexp_btn
+    name: all_docs_button
     layout_properties: {grid_position: 'DSXYJY,BEEDTH'}
-    event_bindings: {click: allexp_btn_click}
+    event_bindings: {click: all_docs_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Pending approval, font_size: null, font: '',
       spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
-    name: pendingappr_btn
+    name: pending_approval_button
     layout_properties: {grid_position: 'KGQVYZ,JSXRHI'}
-    event_bindings: {click: pendingappr_btn_click}
+    event_bindings: {click: pending_approval_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Pending follow-up, font_size: null, font: '',
       spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
-    name: pendingreimb_btn
+    name: pending_followup_btn
     layout_properties: {grid_position: 'XJTLPN,KNDNGJ'}
-    event_bindings: {click: pendingreimb_btn_click}
+    event_bindings: {click: pending_followup_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Past Events, font_size: null, font: '',
       spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
-    name: pastexp_btn
+    name: past_docs_btn
     layout_properties: {grid_position: 'MTXKRC,YDJIJR'}
-    event_bindings: {click: pastexp_btn_click}
+    event_bindings: {click: past_docs_click}
   - type: Label
     properties: {role: null, align: center, tooltip: '', border: '', foreground: 'theme:Primary',
       visible: false, text: • • • • •, font_size: 20, font: '', spacing_above: small,

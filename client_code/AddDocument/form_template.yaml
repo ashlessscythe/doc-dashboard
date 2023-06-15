@@ -51,6 +51,7 @@ components:
     layout_properties: {grid_position: 'OPXEZO,XYMLIW'}
     data_bindings:
     - {property: text, code: 'self.item[''issue'']', writeback: true}
+    event_bindings: {change: issue_box_change}
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'Attachment:', font_size: null, font: '', spacing_above: small,

@@ -21,9 +21,9 @@ class DocumentDashboard(DocumentDashboardTemplate):
 
   def new_document_click(self, **event_args):
     """This method is called when the button is clicked"""
-    expense = {}
-    if alert(AddDocument(item=expense), large=True, buttons=None):
-      anvil.server.call('add_document', expense)
+    doc = {}
+    if alert(AddDocument(item=doc), large=True, buttons=None):
+      anvil.server.call('add_document', doc)
       self.rp.items = anvil.server.call('get_user_documents')
 
 

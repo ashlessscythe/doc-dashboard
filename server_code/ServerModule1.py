@@ -10,17 +10,17 @@ import anvil.pdf
 from datetime import datetime
 
 @anvil.server.callable(require_user=True)
-def get_user_expenses(status=None):
+def get_user_documents(status=None):
   d = {}
   if anvil.users.get_user()['role'] != 'admin':
     d['submitted_by'] = anvil.users.get_user()
   if status != None:
     d['status'] = status
-  return app_tables.expenses.search(tables.order_by('created', ascending=False), **d)
+  return app_tables.documents.search(tables.order_by('created', ascending=False), **d)
 
 @anvil.server.callable(require_user=True)
 def add_document(document_dict):
-  app_tables.expenses.add_row(created=datetime.now(), status="pending", submitted_by=anvil.users.get_user(), **document_dict)
+  app_tables.documents.add_row(created=datetime.now(), status="pending", submitted_by=anvil.users.get_user(), **document_dict)
 
 def is_admin(user):
   return user['role'] == 'admin'
@@ -52,15 +52,15 @@ def get_status_data():
   return labels, values
 
 @anvil.server.callable(require_user=is_admin)
-def get_status_amount_data():
-  data = app_tables.expenses.search(status=q.not_("pending", "rejected"))
+def get_status_dept_data():
+  data = app_tables.documents.search(status=q.not_("pending", "rejected"))
   status_data = [x['status'] for x in data]
-  amount_data = [x['amount'] for x in data]
-  return status_data, amount_data
+  dept_data = [x['type'] for x in data]
+  return status_data, dept_data
   
 @anvil.server.callable(require_user=is_admin)
 def get_dates_data():
-  dates = [x['created'].date() for x in app_tables.expenses.search()]
+  dates = [x['created'].date() for x in app_tables.documents.search()]
   unique_dates = sorted(set(dates))
   qts = []
   for d in unique_dates:

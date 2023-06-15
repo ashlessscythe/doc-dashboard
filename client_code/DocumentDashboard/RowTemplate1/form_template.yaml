@@ -46,12 +46,12 @@ components:
     event_bindings: {click: reject_click}
   - type: Button
     properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
-      foreground: 'theme:Surface Variant', visible: false, text: Reimburse, font_size: null,
+      foreground: 'theme:Surface Variant', visible: false, text: FollowUp, font_size: null,
       font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '#78C0E0', bold: false, underline: false, icon: ''}
-    name: reimburse
+    name: followup
     layout_properties: {}
-    event_bindings: {click: reimburse_click}
+    event_bindings: {click: followup_click}
 - type: Link
   properties: {}
   name: description_link
