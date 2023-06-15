@@ -13,7 +13,7 @@ components:
   name: date_label
   layout_properties: {column: WVUYGG}
   data_bindings:
-  - {property: text, code: 'self.item[''created''].strftime(''%d/%m/%y'')'}
+  - {property: text, code: 'self.item[''created''].strftime(''%Y-%m-%d'')'}
 - type: Label
   properties: {role: tag, align: center, tooltip: '', border: '', foreground: '',
     visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,

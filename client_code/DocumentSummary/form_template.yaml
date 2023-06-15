@@ -61,7 +61,7 @@ components:
     name: date_label
     layout_properties: {grid_position: 'TGRVRY,BRBGED'}
     data_bindings:
-    - {property: text, code: 'self.item[''created''].strftime(''%d/%m/%y'')'}
+    - {property: text, code: 'self.item[''created''].strftime(''%Y-%m-%d'')'}
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Dept, font_size: null, font: '', spacing_above: small,
@@ -108,7 +108,7 @@ components:
     name: rejection_label
     layout_properties: {grid_position: 'RUTYRW,MKNQWN'}
     data_bindings:
-    - {property: text, code: 'self.item[''reject_message'']'}
+    - {property: text, code: 'self.item[''status_change_message'']'}
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'Document/Proof:', font_size: null, font: '', spacing_above: small,

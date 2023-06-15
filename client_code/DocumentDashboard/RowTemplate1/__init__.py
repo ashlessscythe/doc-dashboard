@@ -10,7 +10,8 @@ from anvil.tables import app_tables
 from datetime import datetime
 from ... import State
 from ...DocumentSummary import DocumentSummary
-from ...RejectComment import RejectComment
+from ..._RejectComment import _RejectComment
+from ..._FollowupComment import _FollowupComment
 
 class RowTemplate1(RowTemplate1Template):
   def __init__(self, **properties):
@@ -30,10 +31,10 @@ class RowTemplate1(RowTemplate1Template):
       self.status_label.background = '#1EB980'
     elif self.item['status'] == 'followup':
       self.approve.visible, self.reject.visible, self.followup.visible = True, True, False
-      self.status_label.background = '#D64D47'
+      self.status_label.background = '#78C0E0'
     else:
       self.approve.visible, self.reject.visible, self.followup.visible = False, False, True
-      self.status_label.background = '#78C0E0'
+      self.status_label.background = '#D64D47'
   
   def approve_click(self, **event_args):
     anvil.server.call('change_status', self.item, 'approved')
@@ -48,7 +49,7 @@ class RowTemplate1(RowTemplate1Template):
   def followup_click(self, **event_args):
     msg = {}
     if alert(_FollowupComment(item=msg), large=True, buttons=[("Save", True), ("Cancel", False)]):
-      anvil.server.call('change_status', self.item, msg['followup'])
+      anvil.server.call('followup', self.item, msg['msg'])
     self.refresh_data_bindings()
 
   def description_link_click(self, **event_args):
