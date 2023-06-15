@@ -13,9 +13,9 @@ class DocumentSummary(DocumentSummaryTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    if status != 'rejected':
+    if status not in(['rejected', 'followup']):
       self.label_8.visible = False
-      self.rejection_label.visible = False
+      self.reason_label.visible = False
 
   def download_button_click(self, **event_args):
     if self.item['attachment'] != None:
