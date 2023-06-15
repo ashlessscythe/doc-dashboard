@@ -22,7 +22,7 @@ class SummaryPlots(SummaryPlotsTemplate):
     self.plot_1.layout.title = "Documents by status"
 
     status_data, dept_data = anvil.server.call('get_status_dept_data')
-    self.plot_2.data = go.Pie(labels=status_data, values=amount_data, textinfo="value", hole=.4)
+    self.plot_2.data = go.Pie(labels=status_data, values=dept_data, textinfo="value", hole=.4)
     self.plot_2.layout.title = "Total Docs by Dept"
 
     dates, qts = anvil.server.call('get_dates_data')

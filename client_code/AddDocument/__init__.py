@@ -13,7 +13,7 @@ class AddDocument(AddDocumentTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-  def receipt_upload_change(self, file, **event_args):
+  def doc_upload_change(self, file, **event_args):
     """This method is called when a new file is loaded into this FileLoader"""
     self.item['attachment'] = file
 
@@ -21,7 +21,7 @@ class AddDocument(AddDocumentTemplate):
     """This method is called when the button is clicked"""
     description = self.description_box.text
     issue = self.issue_box.text
-    if description and amount:
+    if description and issue:
       self.raise_event("x-close-alert", value=True)
     else:
       if not description:
@@ -41,6 +41,12 @@ class AddDocument(AddDocumentTemplate):
     """This method is called when the text in this text box is edited"""
     if self.issue_box.role == "input-error" and self.issue_box.text:
       self.issue_box.role = "default"
+
+
+
+
+
+
 
 
 

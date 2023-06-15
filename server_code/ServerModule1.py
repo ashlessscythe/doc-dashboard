@@ -20,6 +20,7 @@ def get_user_documents(status=None):
 
 @anvil.server.callable(require_user=True)
 def add_document(document_dict):
+  print(f"document dict is {document_dict}")
   app_tables.documents.add_row(created=datetime.now(), status="pending", submitted_by=anvil.users.get_user(), **document_dict)
 
 def is_admin(user):

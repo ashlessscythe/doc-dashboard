@@ -72,10 +72,7 @@ db_schema:
     - name: created
       admin_ui: {width: 200}
       type: datetime
-    - name: dept
-      admin_ui: {width: 200}
-      type: number
-    - name: isssue
+    - name: issue
       admin_ui: {width: 200}
       type: string
     - name: attachment
@@ -87,4 +84,7 @@ db_schema:
       target: users
     - name: reject_message
       admin_ui: {width: 200}
+      type: string
+    - name: dept
+      admin_ui: {order: 0.3125, width: 200}
       type: string

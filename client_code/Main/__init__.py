@@ -30,6 +30,7 @@ class Main(MainTemplate):
 
   def switch_to_dashboard(self, status):
     self.content_panel.clear()
+    print(f"status is {status}")
     self.content_panel.add_component(DocumentDashboard(status=status))
   
   def pending_approval_click(self, **event_args):
