@@ -37,10 +37,10 @@ class Main(MainTemplate):
     self.switch_to_dashboard('pending')
 
   def pending_followup_click(self, **event_args):
-    self.switch_to_dashboard('approved')
+    self.switch_to_dashboard('rejected')
 
   def past_docs_click(self, **event_args):
-    self.switch_to_dashboard(q.not_("pending", "approved"))
+    self.switch_to_dashboard('approved')
 
   def all_docs_click(self, **event_args):
     self.switch_to_dashboard(None)

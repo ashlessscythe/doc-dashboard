@@ -83,3 +83,6 @@ components:
     spacing_below: small, background: '', horizontal_align: center}
   name: image_1
   layout_properties: {grid_position: 'JOGQTJ,OZZVNE', slot: logo}
+- type: Timer
+  properties: {}
+  name: timer_1
