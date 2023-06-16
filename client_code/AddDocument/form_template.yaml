@@ -21,6 +21,28 @@ components:
       underline: false, icon: ''}
     name: label_3
     layout_properties: {grid_position: 'EJEXZK,EQMGDB'}
+  - type: DropDown
+    properties:
+      role: null
+      align: full
+      tooltip: ''
+      placeholder: ''
+      border: ''
+      enabled: true
+      foreground: ''
+      items: ['']
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: false
+    name: dept_dropdown
+    layout_properties: {grid_position: 'EJEXZK,VCFVHY'}
   - type: TextBox
     properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: Department,
       border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
