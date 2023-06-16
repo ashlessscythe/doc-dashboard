@@ -7,7 +7,7 @@ components:
   name: dept_label
   layout_properties: {column: RXABXA}
   data_bindings:
-  - {property: text, code: 'self.item[''dept'']'}
+  - {property: text, code: 'self.item[''dept''][''dept'']'}
 - type: Label
   properties: {}
   name: date_label
@@ -22,7 +22,7 @@ components:
   name: status_label
   layout_properties: {column: QWJODR}
   data_bindings:
-  - {property: text, code: 'self.item[''status'']'}
+  - {property: text, code: 'self.item[''status''][''status'']'}
 - type: FlowPanel
   properties: {}
   name: btns_panel

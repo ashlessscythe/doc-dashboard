@@ -15,7 +15,8 @@ def get_user_documents(status=None):
   if anvil.users.get_user()['role'] != 'admin':
     d['submitted_by'] = anvil.users.get_user()
   if status != None:
-    d['status'] = status
+    d['status'] = app_tables.document_status.get(status=status)
+    print(f"post status is {d['status']}")
   return app_tables.documents.search(tables.order_by('created', ascending=False), **d)
 
 @anvil.server.callable(require_user=True)

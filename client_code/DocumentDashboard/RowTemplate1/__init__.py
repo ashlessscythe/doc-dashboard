@@ -23,13 +23,13 @@ class RowTemplate1(RowTemplate1Template):
     self.btns_panel.visible = (State.user['role'] == 'admin')
 
   def set_styling(self):
-    if self.item['status'] == 'pending':
+    if self.item['status']['status'] == 'pending':
       self.approve.visible, self.reject.visible, self.followup.visible = True, True, True
       self.status_label.background = '#D6BA58'
-    elif self.item['status'] == 'approved':
+    elif self.item['status']['status'] == 'approved':
       self.approve.visible, self.reject.visible, self.followup.visible = False, False, False
       self.status_label.background = '#1EB980'
-    elif self.item['status'] == 'followup':
+    elif self.item['status']['status'] == 'followup':
       self.approve.visible, self.reject.visible, self.followup.visible = True, True, False
       self.status_label.background = '#78C0E0'
     else:

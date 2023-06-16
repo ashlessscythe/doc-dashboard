@@ -93,7 +93,7 @@ components:
     name: issue_label
     layout_properties: {grid_position: 'EUGMFO,ANFERM'}
     data_bindings:
-    - {property: text, code: 'self.item[''issue'']'}
+    - {property: text, code: 'self.item[''type'']'}
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'Status Change Reason:', font_size: null, font: '', spacing_above: small,

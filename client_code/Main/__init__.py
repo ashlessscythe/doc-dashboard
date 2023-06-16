@@ -40,7 +40,7 @@ class Main(MainTemplate):
     self.switch_to_dashboard('followup')
 
   def past_docs_click(self, **event_args):
-    self.switch_to_dashboard(q.any_of('approved','rejected'))
+    self.switch_to_dashboard(q.any_of('approved'))
 
   def all_docs_click(self, **event_args):
     self.switch_to_dashboard(None)
