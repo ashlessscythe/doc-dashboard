@@ -12,6 +12,7 @@ class AddDocument(AddDocumentTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    self.message_pill_1.visible = False
     # initialize drop-downs
     self.dept_dd.items = [(d['dept']) for d in anvil.server.call('get_depts')]
     self.type_dd.items = [(t['type']) for t in anvil.server.call('get_types')]
@@ -23,8 +24,9 @@ class AddDocument(AddDocumentTemplate):
   def save_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     if not 'attachment' in self.item:
+      self.message_pill_1.visible = True
       self.message_pill_1.message = "No document uploaded"
-      self.message_pill_1.visible
+      self.message_pill_1.level = 'warning'
     self.item['dept'] = self.dept_dd.selected_value
     self.item['type'] = self.type_dd.selected_value
     self.item['description'] = self.description_box.text
@@ -35,8 +37,6 @@ class AddDocument(AddDocumentTemplate):
         self.dept_dd.role = "input-error"
       if not self.item['type']:
         self.type_dd.role = "input-error"
-      if not self.item['attachment']:
-        self.doc_upload.role = 'input-error'
 
   def cancel_button_click(self, **event_args):
     self.raise_event("x-close-alert", value=False)

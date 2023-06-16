@@ -71,9 +71,6 @@ db_schema:
     - name: created
       admin_ui: {width: 200}
       type: datetime
-    - name: type
-      admin_ui: {width: 200}
-      type: string
     - name: attachment
       admin_ui: {width: 200}
       type: media
@@ -84,20 +81,39 @@ db_schema:
     - name: status_change_message
       admin_ui: {width: 200}
       type: string
-    - name: dept
-      admin_ui: {order: 0.3125, width: 200}
-      type: string
-    - name: Column7
-      admin_ui: {order: -1, width: 200}
+    - name: status
+      admin_ui: {width: 200}
       type: link_single
       target: document_status
+    - name: type
+      admin_ui: {width: 200}
+      type: link_single
+      target: document_type
+    - name: dept
+      admin_ui: {width: 200}
+      type: link_single
+      target: departments
   document_type:
     client: none
     server: full
-    columns: []
+    columns:
+    - name: type
+      admin_ui: {width: 200}
+      type: string
     title: document_type
   document_status:
     client: none
     server: full
-    columns: []
+    columns:
+    - name: status
+      admin_ui: {width: 200}
+      type: string
     title: document_status
+  departments:
+    title: departments
+    client: none
+    server: full
+    columns:
+    - name: dept
+      admin_ui: {width: 200}
+      type: string
