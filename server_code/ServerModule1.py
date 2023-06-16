@@ -64,7 +64,11 @@ def get_status_dept_data():
   status_data = [x['status'] for x in data]
   dept_data = [x['type'] for x in data]
   return status_data, dept_data
-  
+
+@anvil.server.callable
+def get_depts():
+  return app_tables.departments.search()
+
 @anvil.server.callable(require_user=is_admin)
 def get_dates_data():
   dates = [x['created'].date() for x in app_tables.documents.search()]

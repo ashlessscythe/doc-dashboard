@@ -3,9 +3,9 @@ container:
   properties: {col_widths: '{}'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"JCARUM":13,"XYMLIW":47,"RCSMWG":10,"JVGCSY":50,"PMZURO":51,"ZBYIJE":51,"BQCKBW":15,"EQMGDB":15}'}
+  properties: {col_widths: '{"RCSMWG":10,"JVGCSY":50,"EQMGDB":10,"VCFVHY":39,"SEKRHU":13,"RKYZRA":47,"ZZPQEC":11,"UNCRCU":42}'}
   name: column_panel_1
-  layout_properties: {grid_position: 'XABMWT,VKOSSP'}
+  layout_properties: {grid_position: 'WZTMFC,PBHWLX'}
   components:
   - type: Label
     properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
@@ -16,7 +16,7 @@ components:
     layout_properties: {grid_position: 'NQVFGA,FCMDNM'}
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: 'Dept:', font_size: null, font: '', spacing_above: small,
+      visible: true, text: Department, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_3
@@ -26,7 +26,7 @@ components:
       role: null
       align: full
       tooltip: ''
-      placeholder: ''
+      placeholder: Select Department
       border: ''
       enabled: true
       foreground: ''
@@ -40,53 +40,56 @@ components:
       background: ''
       bold: false
       underline: false
-      include_placeholder: false
-    name: dept_dropdown
+      include_placeholder: true
+    name: dept_dd
     layout_properties: {grid_position: 'EJEXZK,VCFVHY'}
-  - type: TextBox
-    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: Department,
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
-    name: dept_box
-    layout_properties: {grid_position: 'EJEXZK,PMZURO'}
     data_bindings:
-    - {property: text, code: 'self.item[''dept'']', writeback: true}
-    event_bindings: {}
+    - {property: selected_value, code: 'self.item[''dept''][''dept'']', writeback: true}
+  - type: Label
+    properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Type:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_4
+    layout_properties: {grid_position: 'CCJLJO,SEKRHU'}
+  - type: DropDown
+    properties:
+      role: null
+      align: full
+      tooltip: ''
+      placeholder: Select Document Type
+      border: ''
+      enabled: true
+      foreground: ''
+      items: []
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
+    name: type_dd
+    layout_properties: {grid_position: 'CCJLJO,RKYZRA'}
+    data_bindings:
+    - {property: selected_value, code: 'self.item[''type''][''type'']', writeback: true}
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'Description:', font_size: null, font: '', spacing_above: none,
       icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_1
-    layout_properties: {grid_position: 'CCJLJO,BQCKBW'}
-  - type: TextBox
-    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: Description,
+    layout_properties: {grid_position: 'MZWDVS,ZZPQEC'}
+  - type: TextArea
+    properties: {role: null, align: left, height: '', tooltip: '', placeholder: Additional info,
       border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+      auto_expand: false, font: '', spacing_above: small, spacing_below: small, italic: false,
       background: '', bold: false, underline: false}
-    name: description_box
-    layout_properties: {grid_position: 'CCJLJO,ZBYIJE'}
-    data_bindings:
-    - {property: text, code: 'self.item[''description'']', writeback: true}
-    event_bindings: {change: description_box_change, pressed_enter: description_box_pressed_enter}
-  - type: Label
-    properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: 'Issue:', font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_4
-    layout_properties: {grid_position: 'OPXEZO,JCARUM'}
-  - type: TextBox
-    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: Issue,
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
-    name: issue_box
-    layout_properties: {grid_position: 'OPXEZO,XYMLIW'}
-    data_bindings:
-    - {property: text, code: 'self.item[''issue'']', writeback: true}
-    event_bindings: {change: issue_box_change}
+    name: text_area_1
+    layout_properties: {grid_position: 'MZWDVS,UNCRCU'}
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'Attachment:', font_size: null, font: '', spacing_above: small,

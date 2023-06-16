@@ -12,6 +12,9 @@ class AddDocument(AddDocumentTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    # initialize drop-downs
+    self.dept_dropdown.items = [(d['dept']) for d in anvil.server.call('get_depts')]
+    self.type_dd.items = [(t['type']) for t in anvil.server.call('get_types')]
 
   def doc_upload_change(self, file, **event_args):
     """This method is called when a new file is loaded into this FileLoader"""
@@ -20,7 +23,7 @@ class AddDocument(AddDocumentTemplate):
   def save_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     description = self.description_box.text
-    issue = self.issue_box.text
+    type = self.item['']
     if description and issue:
       self.raise_event("x-close-alert", value=True)
     else:
