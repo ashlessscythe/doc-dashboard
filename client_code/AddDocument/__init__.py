@@ -13,7 +13,7 @@ class AddDocument(AddDocumentTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # initialize drop-downs
-    self.dept_dropdown.items = [(d['dept']) for d in anvil.server.call('get_depts')]
+    self.dept_dd.items = [(d['dept']) for d in anvil.server.call('get_depts')]
     self.type_dd.items = [(t['type']) for t in anvil.server.call('get_types')]
 
   def doc_upload_change(self, file, **event_args):
@@ -22,28 +22,29 @@ class AddDocument(AddDocumentTemplate):
 
   def save_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    description = self.description_box.text
-    type = self.item['']
-    if description and issue:
+    self.item['dept'] = self.dept_dd.selected_value
+    self.item['type'] = self.type_dd.selected_value
+    self.item['description'] = self.description_box.text
+    if self.item['dept'] and self.item['type']:
       self.raise_event("x-close-alert", value=True)
     else:
-      if not description:
-        self.description_box.role = "input-error"
-      if not issue:
-        self.issue_box.role = "input-error"
+      if not self.item['dept']:
+        self.dept_dd.role = "input-error"
+      if not self.item['type']:
+        self.type_dd.role = "input-error"
 
   def cancel_button_click(self, **event_args):
     self.raise_event("x-close-alert", value=False)
 
-  def description_box_change(self, **event_args):
+  def dept_dd_change(self, **event_args):
     """This method is called when the text in this text box is edited"""
-    if self.description_box.role == "input-error" and self.description_box.text:
-      self.description_box.role = "default"
+    if self.dept_dd.role == "input-error" and self.dept_dd.selected_value:
+      self.dept_dd.role = "default"
 
-  def issue_box_change(self, **event_args):
+  def type_dd_change(self, **event_args):
     """This method is called when the text in this text box is edited"""
-    if self.issue_box.role == "input-error" and self.issue_box.text:
-      self.issue_box.role = "default"
+    if self.type_dd.role == "input-error" and self.type_dd.selected_value:
+      self.type_dd.role = "default"
 
 
 

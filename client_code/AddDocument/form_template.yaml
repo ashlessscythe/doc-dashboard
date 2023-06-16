@@ -44,7 +44,8 @@ components:
     name: dept_dd
     layout_properties: {grid_position: 'EJEXZK,VCFVHY'}
     data_bindings:
-    - {property: selected_value, code: 'self.item[''dept''][''dept'']', writeback: true}
+    - {property: selected_value, code: 'self.item[''dept'']', writeback: true}
+    event_bindings: {change: dept_dd_change}
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'Type:', font_size: null, font: '', spacing_above: small,
@@ -75,7 +76,8 @@ components:
     name: type_dd
     layout_properties: {grid_position: 'CCJLJO,RKYZRA'}
     data_bindings:
-    - {property: selected_value, code: 'self.item[''type''][''type'']', writeback: true}
+    - {property: selected_value, code: 'self.item[''type'']', writeback: true}
+    event_bindings: {change: type_dd_change}
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'Description:', font_size: null, font: '', spacing_above: none,
@@ -88,8 +90,10 @@ components:
       border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
       auto_expand: false, font: '', spacing_above: small, spacing_below: small, italic: false,
       background: '', bold: false, underline: false}
-    name: text_area_1
+    name: description_box
     layout_properties: {grid_position: 'MZWDVS,UNCRCU'}
+    data_bindings:
+    - {property: text, code: 'self.item[''description'']', writeback: true}
   - type: Label
     properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'Attachment:', font_size: null, font: '', spacing_above: small,
