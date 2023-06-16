@@ -24,17 +24,8 @@ class DocumentDashboard(DocumentDashboardTemplate):
     # dictionary
     doc = {}
     if alert(AddDocument(item=doc), large=True, buttons=None):
-      # if no file?
-      if 'attachment' in doc:
-        anvil.server.call('add_document', doc)
-      else:
-        alert(
-          content='Document not uploaded',
-          title='Missing document, ,
-          buttons=
-        )
-    # exit
-    self.rp.items = anvil.server.call('get_user_documents')
+      anvil.server.call('add_document', doc)
+      self.rp.items = anvil.server.call('get_user_documents')
       
 
 

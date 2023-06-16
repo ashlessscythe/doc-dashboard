@@ -22,6 +22,9 @@ class AddDocument(AddDocumentTemplate):
 
   def save_button_click(self, **event_args):
     """This method is called when the button is clicked"""
+    if not 'attachment' in self.item:
+       # notify
+      pass
     self.item['dept'] = self.dept_dd.selected_value
     self.item['type'] = self.type_dd.selected_value
     self.item['description'] = self.description_box.text
@@ -32,6 +35,8 @@ class AddDocument(AddDocumentTemplate):
         self.dept_dd.role = "input-error"
       if not self.item['type']:
         self.type_dd.role = "input-error"
+      if not self.item['attachment']:
+        self.doc_upload.role = 'input-error'
 
   def cancel_button_click(self, **event_args):
     self.raise_event("x-close-alert", value=False)

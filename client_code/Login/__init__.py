@@ -19,4 +19,3 @@ class Login(LoginTemplate):
   def button_1_click(self, **event_args):
     State.user = anvil.users.login_with_form()
     open_form('Main')
-

@@ -126,7 +126,7 @@ components:
       underline: false
       multiple: false
       icon: fa:upload
-    name: receipt_upload
+    name: doc_upload
     layout_properties: {grid_position: 'BPFJWG,JVGCSY'}
     event_bindings: {change: doc_upload_change}
   - type: FlowPanel
