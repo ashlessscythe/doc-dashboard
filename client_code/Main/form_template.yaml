@@ -60,14 +60,6 @@ components:
     name: past_docs_btn
     layout_properties: {grid_position: 'MTXKRC,YDJIJR'}
     event_bindings: {click: past_docs_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Templates, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: templates_btn
-    layout_properties: {grid_position: 'XUVEOM,UACZZQ'}
-    event_bindings: {click: templates_btn_click}
   - type: Label
     properties: {role: null, align: center, tooltip: '', border: '', foreground: 'theme:Primary',
       visible: false, text: • • • • •, font_size: 20, font: '', spacing_above: small,
@@ -84,6 +76,14 @@ components:
     name: summary_btn
     layout_properties: {grid_position: 'UMKXSZ,WZFWMV'}
     event_bindings: {click: summary_btn_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Templates, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: templates_btn
+    layout_properties: {grid_position: 'IUJAPL,BVBTPL'}
+    event_bindings: {click: templates_btn_click}
 - type: Image
   properties: {role: null, vertical_align: center, height: 70, tooltip: '', border: '',
     foreground: '', visible: true, display_mode: shrink_to_fit, spacing_above: small,
@@ -91,6 +91,3 @@ components:
     spacing_below: small, background: '', horizontal_align: center}
   name: image_1
   layout_properties: {grid_position: 'JOGQTJ,OZZVNE', slot: logo}
-- type: Timer
-  properties: {}
-  name: timer_1

@@ -12,11 +12,11 @@ class TemplateDownload(TemplateDownloadTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    self.download_dd.items = [(t['name'], t) for t in anvil.server.call('get_templates')]
+    self.download_dd.items = [(t['type']) for t in anvil.server.call('get_templates')]
 
     # Any code you write here will run before the form opens.
 
   def download_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
-    anvil.media.download(anvil.server.call('get_template', self.item['type']))
+    anvil.media.download(anvil.server.call('download_template', self.item['type']))
 

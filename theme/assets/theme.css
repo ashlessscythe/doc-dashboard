@@ -298,7 +298,14 @@ input[disabled] ~ span {
 
 .anvil-role-card {
   background: %color:Surface Variant%;
+  border-radius: 25px;
   padding: 8px 12px;
+}
+
+.anvil-role-card-rounded-corners {
+  background: %color:Surface Variant%;
+  border-radius: 25px;
+  padding: 20px;
 }
 
 .anvil-role-heading {

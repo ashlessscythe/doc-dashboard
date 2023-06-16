@@ -20,6 +20,8 @@ roles:
   components: [Label, Link]
 - name: input-prompt
   components: [Label, Link]
+- name: card-rounded-corners
+  components: [ColumnPanel]
 color_scheme:
   preset_groups:
   - name: Colour Scheme

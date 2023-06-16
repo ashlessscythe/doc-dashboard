@@ -82,7 +82,7 @@ def get_types():
 
 @anvil.server.callable
 def get_templates():
-  return app_tables.templates.search()
+  return [t['name'] for t in app_tables.templates.search()]
 
 @anvil.server.callable
 def download_template(type):

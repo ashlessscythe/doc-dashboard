@@ -23,7 +23,7 @@ class DocumentDashboard(DocumentDashboardTemplate):
     """This method is called when the button is clicked"""
     # dictionary
     doc = {}
-    if alert(AddDocument(item=doc), large=True, buttons=None):
+    if alert(AddDocument(item=doc), large=True, buttons=None, role='card'):
       anvil.server.call('add_document', doc)
       self.rp.items = anvil.server.call('get_user_documents')
       

@@ -52,8 +52,16 @@ class Main(MainTemplate):
     self.content_panel.add_component(SummaryPlots())
 
   def templates_btn_click(self, **event_args):
-    self.content_panel.clear()
-    self.content_panel.add_component(TemplateDownload())
+    # self.content_panel.clear()
+    # self.content_panel.add_component(TemplateDownload())
+    # try with alert
+    alert(
+      content=TemplateDownload(),
+      buttons=None,
+      large=True, 
+      dismissible=True,
+      role='card'
+    )
 
 
 
