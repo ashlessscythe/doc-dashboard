@@ -63,16 +63,13 @@ db_schema:
     client: none
     server: full
     columns:
-    - name: status
-      admin_ui: {width: 200}
-      type: string
     - name: description
       admin_ui: {width: 200}
       type: string
     - name: created
       admin_ui: {width: 200}
       type: datetime
-    - name: issue
+    - name: type
       admin_ui: {width: 200}
       type: string
     - name: attachment
@@ -88,3 +85,17 @@ db_schema:
     - name: dept
       admin_ui: {order: 0.3125, width: 200}
       type: string
+    - name: Column7
+      admin_ui: {order: -1, width: 200}
+      type: link_single
+      target: document_status
+  document_type:
+    client: none
+    server: full
+    columns: []
+    title: document_type
+  document_status:
+    client: none
+    server: full
+    columns: []
+    title: document_status
