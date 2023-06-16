@@ -3,7 +3,7 @@ container:
   properties: {col_widths: '{}'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"RCSMWG":10,"JVGCSY":50,"EQMGDB":10,"VCFVHY":39,"SEKRHU":13,"RKYZRA":47,"ZZPQEC":11,"UNCRCU":42}'}
+  properties: {col_widths: '{"RCSMWG":13,"JVGCSY":47,"EQMGDB":10,"VCFVHY":39,"SEKRHU":13,"RKYZRA":47,"ZZPQEC":11,"UNCRCU":42}'}
   name: column_panel_1
   layout_properties: {grid_position: 'WZTMFC,PBHWLX'}
   components:
@@ -127,8 +127,12 @@ components:
       multiple: false
       icon: fa:upload
     name: doc_upload
-    layout_properties: {grid_position: 'BPFJWG,JVGCSY'}
+    layout_properties: {grid_position: 'BPFJWG,JVGCSY AATGQB,ETQDZG'}
     event_bindings: {change: doc_upload_change}
+  - type: form:C6ZZPAPN4YYF5NVJ:MessagePill
+    properties: {}
+    name: message_pill_1
+    layout_properties: {grid_position: 'BPFJWG,JVGCSY AATGQB,NOVIEL'}
   - type: FlowPanel
     properties: {role: null, spacing: medium, align: right, tooltip: '', border: '',
       foreground: '', visible: true, spacing_above: none, spacing_below: none, background: ''}

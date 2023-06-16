@@ -23,8 +23,8 @@ class AddDocument(AddDocumentTemplate):
   def save_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     if not 'attachment' in self.item:
-       # notify
-      pass
+      self.message_pill_1.message = "No document uploaded"
+      self.message_pill_1.visible
     self.item['dept'] = self.dept_dd.selected_value
     self.item['type'] = self.type_dd.selected_value
     self.item['description'] = self.description_box.text
