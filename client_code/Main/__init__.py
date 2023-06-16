@@ -11,6 +11,7 @@ from anvil.tables import app_tables
 from .. import State
 from ..DocumentDashboard import DocumentDashboard
 from ..SummaryPlots import SummaryPlots
+from ..TemplateDownload import TemplateDownload
 
 class Main(MainTemplate):
   def __init__(self, **properties):
@@ -49,6 +50,10 @@ class Main(MainTemplate):
     """This method is called when the button is clicked"""
     self.content_panel.clear()
     self.content_panel.add_component(SummaryPlots())
+
+  def templates_btn_click(self, **event_args):
+    self.content_panel.clear()
+    self.content_panel.add_component(TemplateDownload())
 
 
 

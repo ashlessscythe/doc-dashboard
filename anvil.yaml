@@ -117,3 +117,15 @@ db_schema:
     - name: dept
       admin_ui: {width: 200}
       type: string
+  templates:
+    client: none
+    server: full
+    columns:
+    - name: file
+      admin_ui: {order: 1, width: 200}
+      type: media
+    - name: name
+      admin_ui: {order: -1, width: 200}
+      type: link_single
+      target: document_type
+    title: templates

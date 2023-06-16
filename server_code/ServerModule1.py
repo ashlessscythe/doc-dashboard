@@ -80,6 +80,15 @@ def get_depts():
 def get_types():
   return app_tables.document_type.search()
 
+@anvil.server.callable
+def get_templates():
+  return app_tables.templates.search()
+
+@anvil.server.callable
+def download_template(type):
+  row = app_tables.document_type.get(type=type)
+  return app_tables.templates.get(name=row)['file']
+
 @anvil.server.callable(require_user=is_admin)
 def get_dates_data():
   dates = [x['created'].date() for x in app_tables.documents.search()]
