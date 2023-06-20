@@ -14,6 +14,13 @@ components:
       underline: false, icon: ''}
     name: label_1
     layout_properties: {grid_position: 'DYJTGX,ZFEDVE'}
+  - type: form:C6ZZPAPN4YYF5NVJ:Switch
+    properties: {tooltip: '', enabled: true, foreground: null, text_post: Plots on,
+      visible: true, font_size: 14, spacing_above: small, checked_color: null, spacing_below: small,
+      italic: null, text_pre: Plots off, background: null, bold: null, checked: false}
+    name: switch_1
+    layout_properties: {grid_position: 'DYJTGX,IJPDIZ'}
+    event_bindings: {change: switch_1_change}
   - type: Button
     properties: {role: outlined, align: right, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Download as pdf, font_size: null, font: '',

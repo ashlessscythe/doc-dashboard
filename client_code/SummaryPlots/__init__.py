@@ -17,12 +17,14 @@ class SummaryPlots(SummaryPlotsTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run when the form opens.
+
+  def update_plots(self):
     labels, values = anvil.server.call('get_status_data')
-    self.plot_1.data = go.Pie(labels=labels, values=values, hole=.4)
+    self.plot_1.figure = go.Pie(labels=labels, values=values, hole=.4)
     self.plot_1.layout.title = "Documents by status"
 
     status_data, dept_data = anvil.server.call('get_status_dept_data')
-    self.plot_2.data = go.Pie(labels=status_data, values=dept_data, textinfo="value", hole=.4)
+    self.plot_2.figure = go.Pie(labels=status_data, values=dept_data, textinfo="value", hole=.4)
     self.plot_2.layout.title = "Total Docs by Dept"
 
     dates, qts = anvil.server.call('get_dates_data')
@@ -36,6 +38,11 @@ class SummaryPlots(SummaryPlotsTemplate):
     """This method is called when the button is clicked"""
     media_object = anvil.server.call('create_summary_pdf')
     anvil.media.download(media_object)
+
+  def switch_1_change(self, **event_args):
+    """This method is called when this switch is checked or unchecked"""
+    self.update_plots()
+
 
 
 
