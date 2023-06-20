@@ -68,4 +68,10 @@ components:
   layout_properties: {column: YURLBE}
   data_bindings:
   - {property: text, code: 'self.item[''type''][''type'']'}
+- type: Label
+  properties: {}
+  name: submitted_label
+  layout_properties: {column: CTFZEQ}
+  data_bindings:
+  - {property: text, code: 'self.item[''submitted_by''][''email'']'}
 is_package: true

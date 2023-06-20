@@ -39,6 +39,7 @@ components:
       expand: false}
     - {id: RXABXA, title: Dept, data_key: amount, $$hashKey: 'object:1371', width: 82,
       expand: false}
+    - {id: CTFZEQ, title: Submitted By, data_key: submitted_by, $$hashKey: 'object:10016'}
     - {id: AXFMLE, title: Actions, data_key: column_1, $$hashKey: 'object:77407',
       width: 240, expand: false}
     auto_header: true

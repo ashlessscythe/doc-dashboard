@@ -13,7 +13,8 @@ class DocumentSummary(DocumentSummaryTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    if status not in(['rejected', 'followup']):
+    print(f"status is {status}")
+    if status['status'] not in(['rejected', 'followup']):
       self.label_8.visible = False
       self.reason_label.visible = False
 
