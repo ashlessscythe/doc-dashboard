@@ -69,11 +69,11 @@ def get_status_data():
 
 @anvil.server.callable(require_user=is_admin)
 def get_status_dept_data():
-  pending_rows = app_tables.document_status.get(status='pending')
-  rejected_rows = app_tables.document_status.get(status='rejected')
-  data = app_tables.documents.search(status=q.any_of(pending_rows, rejected_rows))
-  status_data = [x['status'] for x in data]
-  dept_data = [x['type'] for x in data]
+  pending_row = app_tables.document_status.get(status='pending')
+  rejected_row = app_tables.document_status.get(status='rejected')
+  data = app_tables.documents.search(status=q.any_of(pending_row, rejected_row))
+  status_data = [x['status']['status'] for x in data]
+  dept_data = [x['type']['type'] for x in data]
   return status_data, dept_data
 
 @anvil.server.callable
