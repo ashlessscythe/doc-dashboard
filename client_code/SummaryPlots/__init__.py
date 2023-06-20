@@ -1,6 +1,8 @@
 from ._anvil_designer import SummaryPlotsTemplate
 from anvil import *
+import pandas as pd
 import plotly.graph_objects as go
+import plotly.express as px
 import anvil.server
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
@@ -20,7 +22,7 @@ class SummaryPlots(SummaryPlotsTemplate):
 
   def update_plots(self):
     labels, values = anvil.server.call('get_status_data')
-    self.plot_1.figure = go.Pie(labels=labels, values=values, hole=.4)
+    self.plot_1.figure = px.pie(labels=labels, values=values, hole=.4)
     self.plot_1.layout.title = "Documents by status"
 
     status_data, dept_data = anvil.server.call('get_status_dept_data')
