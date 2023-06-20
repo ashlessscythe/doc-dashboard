@@ -59,4 +59,13 @@ components:
   data_bindings:
   - {property: text, code: 'self.item[''description'']'}
   event_bindings: {click: description_link_click}
+- type: Label
+  properties: {role: tag, align: center, tooltip: '', border: '', foreground: '',
+    visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: 'theme:Light Overlay 3', bold: false,
+    underline: false, icon: ''}
+  name: type_label
+  layout_properties: {column: YURLBE}
+  data_bindings:
+  - {property: text, code: 'self.item[''type''][''type'']'}
 is_package: true

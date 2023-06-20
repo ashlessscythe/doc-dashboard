@@ -34,6 +34,7 @@ components:
       expand: false}
     - {id: RBXODV, title: Description, data_key: description, $$hashKey: 'object:1335',
       width: '', expand: false}
+    - {id: YURLBE, title: Type, data_key: type, $$hashKey: 'object:29163'}
     - {id: WVUYGG, title: Created, data_key: created, $$hashKey: 'object:1336', width: 93,
       expand: false}
     - {id: RXABXA, title: Dept, data_key: amount, $$hashKey: 'object:1371', width: 82,

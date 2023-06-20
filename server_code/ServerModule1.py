@@ -29,7 +29,9 @@ def add_document(doc):
     submitted_by=anvil.users.get_user(), 
     dept=app_tables.departments.get(dept=doc['dept']),
     type=app_tables.document_type.get(type=doc['type']),
-    description=doc['description'])
+    description=doc['description'],
+    attachment=doc['attachment']
+  )
 
 def is_admin(user):
   return user['role'] == 'admin'
@@ -67,7 +69,9 @@ def get_status_data():
 
 @anvil.server.callable(require_user=is_admin)
 def get_status_dept_data():
-  data = app_tables.documents.search(status=q.not_("pending", "rejected"))
+  pending_rows = app_tables.document_status.get(status='pending')
+  rejected_rows = app_tables.document_status.get(status='rejected')
+  data = app_tables.documents.search(status=q.any_of(pending_rows, rejected_rows))
   status_data = [x['status'] for x in data]
   dept_data = [x['type'] for x in data]
   return status_data, dept_data

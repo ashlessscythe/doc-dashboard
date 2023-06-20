@@ -26,7 +26,10 @@ class SummaryPlots(SummaryPlotsTemplate):
     self.plot_2.layout.title = "Total Docs by Dept"
 
     dates, qts = anvil.server.call('get_dates_data')
-    self.plot_3.data = go.Scatter(x=dates, y=qts)
+    print(f"dates is {dates} qts is {qts}")
+    # self.plot_3.data = go.Scatter(x=dates, y=qts)
+    
+    self.plot_3.data = go.Pie(values=qts, labels=dates)
     self.plot_3.layout.title = "Docs through time"
 
   def download_summ_btn_click(self, **event_args):
