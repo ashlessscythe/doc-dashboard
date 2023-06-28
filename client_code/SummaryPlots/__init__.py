@@ -16,8 +16,9 @@ class SummaryPlots(SummaryPlotsTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run when the form opens.
-
+    
   def update_plots(self):
+    anvil.server.call('get_doc_data')
     fig1, fig2, fig3 = anvil.server.call('create_plots')
     
     self.plot_1.figure = fig1

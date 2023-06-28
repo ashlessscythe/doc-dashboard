@@ -12,12 +12,19 @@ import plotly.express as px
 from .ServerModule1 import *
 
 @anvil.server.callable
+def get_doc_data():
+  data = app_tables.documents.search()
+  df = pd.DataFrame(data)
+  # print(df.head())
+  return df
+
+@anvil.server.callable
 def create_plots():
-  labels, values = get_status_data()
-  print(f"labels is {labels}, values is {values}")
+  df = get_doc_data()
   fig1 = px.pie(
-    labels=labels, values=values, title="Documents by status",
-    facet_col=[l['status'] for l in labels]
+    df,
+    labels=df['status'],
+    
   )
 
   status_data, dept_data = get_status_dept_data()
