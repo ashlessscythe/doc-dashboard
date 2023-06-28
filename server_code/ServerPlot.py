@@ -14,8 +14,10 @@ from .ServerModule1 import *
 @anvil.server.callable
 def create_plots():
   labels, values = get_status_data()
+  print(f"labels is {labels}, values is {values}")
   fig1 = px.pie(
-    labels=labels, values=values, hole=.4, title="Documents by status"
+    labels=labels, values=values, title="Documents by status",
+    facet_col=[l['status'] for l in labels]
   )
 
   status_data, dept_data = get_status_dept_data()
