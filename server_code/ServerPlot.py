@@ -14,20 +14,28 @@ from .ServerModule1 import *
 @anvil.server.callable
 def get_doc_data():
   data = app_tables.documents.search()
-  df = pd.DataFrame(data)
-  print(df.describe())
-  # print(df.columns())
-  # df = df.loc[:,['ID', 'status', 'submitted_by', 'dept', 'type', 'description', 'status_change_message', 'created']]
+  dicts = [
+    {
+      'status':r['status']['status'], 
+      'submitted_by':r['submitted_by']['email'],
+      'dept':r['dept']['dept'],
+      'type':r['type']['type'],
+      'description':r['description'],
+      'message':r['status_change_message'],
+      'created':r['created']
+    } for r in data]
+  df = pd.DataFrame.from_dict(dicts)
   print(df.head())
   return df
 
 @anvil.server.callable
 def create_plots():
   df = get_doc_data()
+  dept_df = df.groupby(['status']).
   fig1 = px.pie(
     df,
     labels='status',
-    values='ID',    
+    values='type',    
     title='Docs by status'
   )
 
