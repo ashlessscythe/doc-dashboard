@@ -15,8 +15,9 @@ from .ServerModule1 import *
 def get_doc_data():
   data = app_tables.documents.search()
   df = pd.DataFrame(data)
-  print(df.columns())
-  df = df.loc[:,['ID', 'status', 'submitted_by', 'dept', 'type', 'description', 'status_change_message', 'created']]
+  print(df.describe())
+  # print(df.columns())
+  # df = df.loc[:,['ID', 'status', 'submitted_by', 'dept', 'type', 'description', 'status_change_message', 'created']]
   print(df.head())
   return df
 
