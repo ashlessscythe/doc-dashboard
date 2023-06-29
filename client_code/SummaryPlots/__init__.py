@@ -33,8 +33,3 @@ class SummaryPlots(SummaryPlotsTemplate):
     """This method is called when this switch is checked or unchecked"""
     self.update_plots()
 
-
-
-
-
-
