@@ -11,8 +11,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 from .ServerModule1 import *
 
-@anvil.server.callable
-def get_doc_data():
+def get_df():
   data = app_tables.documents.search()
   dicts = [
     {
@@ -25,30 +24,37 @@ def get_doc_data():
       'created':r['created']
     } for r in data]
   df = pd.DataFrame.from_dict(dicts)
-  print(df.head())
   return df
+
+def get_status_data():
+  df = get_df()
+  df_stat = df.groupby(by=['status']).size().reset_index(name='count')
+  df_dept = df.groupby(by=['dept']).size().reset_index(name='count')
+  df_date = df.groupby(by=['type', 'created']).size().reset_index(name='count')
+  df_date['created'] = pd.to_datetime(df_date['created'], utc=True)
+  df_date['quarter'] = df_date['created'].dt.quarter
+  return df_stat, df_dept, df_date
 
 @anvil.server.callable
 def create_plots():
-  df = get_doc_data()
-  dept_df = df.groupby(['status']).
+  dept, stat, qtr = get_status_data()
+  print(df.head())
   fig1 = px.pie(
-    df,
+    stat,
     labels='status',
-    values='type',    
+    values='count',    
     title='Docs by status'
   )
 
   fig2 = px.pie(
-    df,
+    dept,
     labels='dept',
-    values='type',
+    values='count',
     title="Total Docs by Dept"
   )
 
-  dates, qts = get_dates_data()
   fig3 = px.scatter(
-    x=dates, y=qts,
+    qtr, x='created', y='quarter',
     title='Docs through time'
   )
 
