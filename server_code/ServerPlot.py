@@ -9,7 +9,7 @@ import anvil.server
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
-from .ServerModule1 import *
+from .ServerDefault import *
 
 def get_df():
   data = app_tables.documents.search()
@@ -66,5 +66,5 @@ def create_plots():
     facet_col_wrap=3,
     title='Docs through time'
   )
-
+  
   return fig1, fig2, fig3
