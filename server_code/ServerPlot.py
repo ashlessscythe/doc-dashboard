@@ -28,12 +28,15 @@ def get_df():
 
 def get_status_data():
   df = get_df()
+  # format date
+  df['created'] = pd.to_datetime(df['created'], utc=True)
+  df['week'] = df['created'].dt.week
+  df['quarter'] = df['created'].dt.quarter
+
+  # separate dfs
   df_stat = df.groupby(by=['status']).size().reset_index(name='count')
-  df_dept = df.groupby(by=['dept']).size().reset_index(name='count')
-  df_date = df.groupby(by=['type', 'dept', 'created']).size().reset_index(name='count')
-  df_date['created'] = pd.to_datetime(df_date['created'], utc=True)
-  df_date['week'] = df_date['created'].dt.week
-  df_date['quarter'] = df_date['created'].dt.quarter
+  df_dept = df.groupby(by=['dept', 'week']).size().reset_index(name='count')
+  df_date = df.groupby(by=['type', 'dept', 'week', 'quarter']).size().reset_index(name='count')
   return df_stat, df_dept, df_date
 
 @anvil.server.callable
@@ -47,10 +50,11 @@ def create_plots():
     title='Docs by status'
   )
 
-  fig2 = px.pie(
+  fig2 = px.bar(
     df_dept,
-    names='dept',
-    values='count',
+    x='week',
+    y='count',
+    color='dept',
     title="Total Docs by Dept"
   )
 
@@ -58,6 +62,8 @@ def create_plots():
     df_date, 
     x='week', 
     y='dept',
+    facet_col='type',
+    facet_col_wrap=3,
     title='Docs through time'
   )
 
