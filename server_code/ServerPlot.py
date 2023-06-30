@@ -54,11 +54,10 @@ def create_plots():
     title="Total Docs by Dept"
   )
 
-  fig3 = px.scatter(
+  fig3 = px.density_heatmap(
     df_date, 
     x='week', 
     y='dept',
-    size='count',
     title='Docs through time'
   )
 
