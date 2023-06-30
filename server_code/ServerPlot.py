@@ -43,6 +43,7 @@ def get_status_data():
 def create_plots():
   df_stat, df_dept, df_date = get_status_data()
   [print(df.head()) for df in [df_stat, df_dept, df_date]]
+  
   fig1 = px.pie(
     df_stat,
     names='status',
@@ -57,14 +58,22 @@ def create_plots():
     color='dept',
     title="Total Docs by Dept"
   )
+  fig2.add_hline(
+    y=2, 
+    line_dash='dot', 
+    annotation_text='minimum', 
+    annotation_position='top left'
+  )
 
   fig3 = px.density_heatmap(
     df_date, 
     x='week', 
-    y='dept',
-    facet_col='type',
-    facet_col_wrap=3,
+    y='type',
+    facet_col='dept',
+    facet_col_wrap=2,
+    color_continuous_scale="Viridis",
     title='Docs through time'
   )
+  fig3.update_xaxes(matches=None)
   
   return fig1, fig2, fig3
