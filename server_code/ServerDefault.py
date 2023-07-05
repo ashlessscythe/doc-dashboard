@@ -42,7 +42,7 @@ def send_email(user, message):
 
 @anvil.server.callable(require_user=is_admin)
 def change_status(row, status):
-  old_status = app_tables.document_status.get(status=row['status'])
+  old_status = app_tables.document_status.get(status=row['status']['status'])
   user = row['submitted_by']['email']
   message = f"<p>Hi, {user},</p><p>The status of your document ('{row['description']}') changed from <b>{old_status}</b> to <b>{status}</b>.</p><p>Visit the <a href={anvil.server.get_app_origin()}>app</a> to learn more details.</p>"
   row.update(status=app_tables.document_status.get(status=status))
