@@ -10,6 +10,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 from .ServerDefault import *
+from datetime import datetime
 
 def get_df():
   data = app_tables.documents.search()
@@ -30,7 +31,7 @@ def get_status_data():
   df = get_df()
   # format date
   df['created'] = pd.to_datetime(df['created'], utc=True)
-  df['week'] = df['created'].dt.week
+  df['week'] = df['created'].dt.isocalendar().week
   df['quarter'] = df['created'].dt.quarter
 
   # separate dfs
