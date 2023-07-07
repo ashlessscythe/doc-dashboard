@@ -17,6 +17,8 @@ class DocumentDashboard(DocumentDashboardTemplate):
 
     if State.user['role'] != 'admin':
       self.data_view.columns = self.data_view.columns[:-1]
+      self.label_2.visible = False
+      self.drop_down_1.visible = False
     self.rp.items = anvil.server.call('get_user_documents', status)
 
   def new_document_click(self, **event_args):
@@ -26,6 +28,11 @@ class DocumentDashboard(DocumentDashboardTemplate):
     if alert(AddDocument(item=doc), large=True, buttons=None, role='card'):
       anvil.server.call('add_document', doc)
       self.rp.items = anvil.server.call('get_user_documents')
+
+  def drop_down_1_change(self, **event_args):
+    """This method is called when an item is selected"""
+    pass
+
       
 
 
