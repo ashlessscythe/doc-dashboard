@@ -12,6 +12,7 @@ from ... import State
 from ...DocumentSummary import DocumentSummary
 from ..._RejectComment import _RejectComment
 from ..._FollowupComment import _FollowupComment
+from ..._ConfirmDelete import _ConfirmDelete
 
 class RowTemplate1(RowTemplate1Template):
   def __init__(self, **properties):
@@ -19,8 +20,9 @@ class RowTemplate1(RowTemplate1Template):
     self.init_components(**properties)
 
     # Any code you write here will run when the form opens.
-
     self.btns_panel.visible = (State.user['role'] == 'admin')
+    self.btns_panel_2.visible = True
+    self.delete.visible = True
 
   def set_styling(self):
     if self.item['status']['status'] == 'pending':
@@ -58,6 +60,25 @@ class RowTemplate1(RowTemplate1Template):
   def form_refreshing_data_bindings(self, **event_args):
     """This method is called when refreshing_data_bindings is called"""
     self.set_styling()
+
+  def delete_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    msg = alert(
+      content=_ConfirmDelete, 
+      title='Confirm Delete',
+      large=True,
+      buttons=[
+        ("Yes", True),
+        ("No", False)
+      ])
+    if msg == True:
+      # anvil.server.call('delete_doc', self.item)
+      Notification(message='Delete would be called here...')
+    else:
+      Notification(message='Not deleting')
+    self.refresh_data_bindings()
+
+
 
 
 

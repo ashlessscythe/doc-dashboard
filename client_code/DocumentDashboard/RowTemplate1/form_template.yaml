@@ -25,6 +25,19 @@ components:
   - {property: text, code: 'self.item[''status''][''status'']'}
 - type: FlowPanel
   properties: {}
+  name: btns_panel_2
+  layout_properties: {column: AXFMLE}
+  components:
+  - type: Button
+    properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
+      foreground: 'theme:Surface Variant', visible: false, text: Delete, font_size: null,
+      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '#D64D47', bold: false, underline: false, icon: ''}
+    name: delete
+    layout_properties: {}
+    event_bindings: {click: delete_click}
+- type: FlowPanel
+  properties: {}
   name: btns_panel
   layout_properties: {column: AXFMLE}
   components:
@@ -40,7 +53,7 @@ components:
     properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
       foreground: 'theme:Surface Variant', visible: false, text: Reject, font_size: null,
       font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '#D64D47', bold: false, underline: false, icon: ''}
+      background: '#e35d6a', bold: false, underline: false, icon: ''}
     name: reject
     layout_properties: {}
     event_bindings: {click: reject_click}

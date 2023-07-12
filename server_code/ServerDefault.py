@@ -33,6 +33,10 @@ def add_document(doc):
     attachment=doc['attachment']
   )
 
+@anvil.server.callable
+def delete_doc(row):
+  row.delete()
+
 def is_admin(user):
   return user['role'] == 'admin'
 
@@ -106,4 +110,3 @@ def get_dates_data():
 def create_summary_pdf():
   return anvil.pdf.render_form('SummaryPlots')
 
-  
