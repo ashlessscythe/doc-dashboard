@@ -73,5 +73,6 @@ components:
   name: submitted_label
   layout_properties: {column: CTFZEQ}
   data_bindings:
-  - {property: text, code: 'self.item[''submitted_by''][''email'']'}
+  - {property: text, code: 'self.item[''submitted_by''][''display_name''] if len(self.item[''submitted_by''][''display_name''])
+      > 1 else self.item[''submitted_by''][''email'']'}
 is_package: true
