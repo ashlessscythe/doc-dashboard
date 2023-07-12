@@ -73,9 +73,10 @@ class RowTemplate1(RowTemplate1Template):
       ])
     if msg == True:
       # anvil.server.call('delete_doc', self.item)
+      print(f"msg is {msg}")
       Notification(message='Delete would be called here...')
     else:
-      Notification(message='Not deleting')
+      Notification(message='Not deleting...')
     self.refresh_data_bindings()
 
 
