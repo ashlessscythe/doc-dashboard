@@ -10,7 +10,7 @@ import anvil.pdf
 from datetime import datetime
 
 @anvil.server.callable(require_user=True)
-def get_user_documents(status=None):
+def get_user_documents(status=None, dept_filter=None):
   d = {}
   d['deleted'] = False
   if anvil.users.get_user()['role'] != 'admin':
@@ -18,6 +18,9 @@ def get_user_documents(status=None):
   if status != None:
     d['status'] = app_tables.document_status.get(status=status)
     print(f"post status is {d['status']}")
+  if dept_filter != None:
+    d['dept'] = app_tables.departments.get(dept=dept_filter)
+    print(f"filter is {filter}")
   return app_tables.documents.search(tables.order_by('created', ascending=False), **d)
 
 @anvil.server.callable(require_user=True)
