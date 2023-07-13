@@ -14,14 +14,16 @@ class DocumentDashboard(DocumentDashboardTemplate):
   def __init__(self, status, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    # set global
+    State.status = status
     self.dd_filter.items = [(d['dept']) for d in anvil.server.call('get_depts')]
 
     if State.user['role'] != 'admin':
       # self.data_view.columns = self.data_view.columns[:-1]
       self.label_filter.visible = False
       self.dd_filter.visible = False
-    dept_filter = self.dd_filter.selected_value
-    self.rp.items = anvil.server.call('get_user_documents', status, dept_filter)
+      self.btn_apply.visible = False
+    self.rp.items = anvil.server.call('get_user_documents', State.status)
 
   def new_document_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -35,9 +37,13 @@ class DocumentDashboard(DocumentDashboardTemplate):
     """This method is called when an item is selected"""
     self.refresh_data_bindings()
 
+  def filter_table(self, **event_args):
+    dept_filter = self.dd_filter.selected_value
+    self.rp.items = anvil.server.call('get_user_documents', State.status, dept_filter)
+  
   def btn_apply_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass
+    self.filter_table()
 
 
 
