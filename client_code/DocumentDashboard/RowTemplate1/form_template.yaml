@@ -25,46 +25,46 @@ components:
   - {property: text, code: 'self.item[''status''][''status'']'}
 - type: FlowPanel
   properties: {}
-  name: btns_panel_2
+  name: flow_panel_1
   layout_properties: {column: AXFMLE}
   components:
+  - type: FlowPanel
+    properties: {}
+    name: btns_panel
+    layout_properties: {column: AXFMLE}
+    components:
+    - type: Button
+      properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
+        foreground: 'theme:Surface Variant', visible: false, text: Approve, font_size: null,
+        font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false, icon: ''}
+      name: approve
+      layout_properties: {}
+      event_bindings: {click: approve_click}
+    - type: Button
+      properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
+        foreground: 'theme:Surface Variant', visible: false, text: Reject, font_size: null,
+        font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '#e35d6a', bold: false, underline: false, icon: ''}
+      name: reject
+      layout_properties: {}
+      event_bindings: {click: reject_click}
+    - type: Button
+      properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
+        foreground: 'theme:Surface Variant', visible: false, text: FollowUp, font_size: null,
+        font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '#78C0E0', bold: false, underline: false, icon: ''}
+      name: followup
+      layout_properties: {}
+      event_bindings: {click: followup_click}
   - type: Button
     properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
       foreground: 'theme:Surface Variant', visible: false, text: Delete, font_size: null,
       font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '#D64D47', bold: false, underline: false, icon: ''}
     name: delete
-    layout_properties: {}
+    layout_properties: {column: AXFMLE}
     event_bindings: {click: delete_click}
-- type: FlowPanel
-  properties: {}
-  name: btns_panel
-  layout_properties: {column: AXFMLE}
-  components:
-  - type: Button
-    properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
-      foreground: 'theme:Surface Variant', visible: false, text: Approve, font_size: null,
-      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: approve
-    layout_properties: {}
-    event_bindings: {click: approve_click}
-  - type: Button
-    properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
-      foreground: 'theme:Surface Variant', visible: false, text: Reject, font_size: null,
-      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '#e35d6a', bold: false, underline: false, icon: ''}
-    name: reject
-    layout_properties: {}
-    event_bindings: {click: reject_click}
-  - type: Button
-    properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
-      foreground: 'theme:Surface Variant', visible: false, text: FollowUp, font_size: null,
-      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '#78C0E0', bold: false, underline: false, icon: ''}
-    name: followup
-    layout_properties: {}
-    event_bindings: {click: followup_click}
 - type: Link
   properties: {}
   name: description_link

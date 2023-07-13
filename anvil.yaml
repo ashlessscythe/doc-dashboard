@@ -7,8 +7,13 @@ services:
   server_config: {}
 - source: /runtime/services/anvil/users.yml
   client_config: {allow_signup: true, enable_automatically: false, use_email: true,
-    confirm_email: true, use_google: true}
-  server_config: {user_table: users}
+    confirm_email: true, use_google: false}
+  server_config:
+    user_table: users
+    email_content:
+      confirm_address: {html: '<p>Thanks for registering your account with us. Please
+          click the following link to confirm that this is your account:</p><p>{{confirm_link}}.</p><p><br></p><p>Note
+          that after confirming, account needs to be activated by an admin.</p><p><br></p><p>Thanks,</p><p>Admin</p>'}
 - source: /runtime/services/google.yml
   client_config: {}
   server_config: {}
@@ -100,6 +105,16 @@ db_schema:
       admin_ui: {width: 200}
       type: link_single
       target: departments
+    - name: deleted_by
+      admin_ui: {order: 8, width: 200}
+      type: link_single
+      target: users
+    - name: deleted_on
+      admin_ui: {order: 8, width: 200}
+      type: datetime
+    - name: deleted
+      admin_ui: {order: 8, width: 200}
+      type: bool
   document_type:
     client: none
     server: full

@@ -21,7 +21,6 @@ class RowTemplate1(RowTemplate1Template):
 
     # Any code you write here will run when the form opens.
     self.btns_panel.visible = (State.user['role'] == 'admin')
-    self.btns_panel_2.visible = True
     self.delete.visible = True
 
   def set_styling(self):
@@ -63,22 +62,22 @@ class RowTemplate1(RowTemplate1Template):
 
   def delete_click(self, **event_args):
     """This method is called when the button is clicked"""
-    msg = {}
+    msg = {'msg':'Really delete?'}
     if alert(
-      content=_ConfirmDelete, 
+      content=_ConfirmDelete(item=msg), 
       title='Confirm Delete',
       large=True,
       buttons=[
         ("Yes", True),
         ("No", False)
       ]):
-      print(f"msg is {msg}")
-      # anvil.server.call('delete_doc', self.item)
-      Notification(message='Delete would be called here...')
+      print(f"msg is {msg} item is {self.item}")
+      anvil.server.call('delete_doc', self.item)
+      self.refresh_data_bindings()
     else:
       Notification(message='Not deleting...')
-    print(f"refreshing")
-    self.refresh_data_bindings()
+      print(f"refreshing")
+      self.refresh_data_bindings()
 
 
 

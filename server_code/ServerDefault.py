@@ -12,6 +12,7 @@ from datetime import datetime
 @anvil.server.callable(require_user=True)
 def get_user_documents(status=None):
   d = {}
+  d['deleted'] = False
   if anvil.users.get_user()['role'] != 'admin':
     d['submitted_by'] = anvil.users.get_user()
   if status != None:
@@ -33,9 +34,10 @@ def add_document(doc):
     attachment=doc['attachment']
   )
 
-@anvil.server.callable
+@anvil.server.callable(require_user=True)
 def delete_doc(row):
-  row.delete()
+  print(f"marking row {row} as deleted")
+  row.update(deleted=True, deleted_by=app_tables.users.get(email=anvil.users.get_user()['email']), deleted_on=datetime.now())
 
 def is_admin(user):
   return user['role'] == 'admin'

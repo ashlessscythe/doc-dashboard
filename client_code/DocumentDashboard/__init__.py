@@ -16,7 +16,7 @@ class DocumentDashboard(DocumentDashboardTemplate):
     self.init_components(**properties)
 
     if State.user['role'] != 'admin':
-      self.data_view.columns = self.data_view.columns[:-1]
+      # self.data_view.columns = self.data_view.columns[:-1]
       self.label_2.visible = False
       self.drop_down_1.visible = False
     self.rp.items = anvil.server.call('get_user_documents', status)
