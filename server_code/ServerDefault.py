@@ -91,8 +91,19 @@ def get_types():
   return app_tables.document_type.search()
 
 @anvil.server.callable
+def get_sops(dept):
+  return app_tables.sop.search(dept=app_tables.departments.get(dept=dept))
+
+@anvil.server.callable
 def get_templates():
   return [t['name'] for t in app_tables.templates.search()]
+
+@anvil.server.callable
+def download_sop(dept, month):
+  dept_row = app_tables.departments.get(dept=dept)
+  month_row = app_tables.months.get(month=month)
+  return app_tables.sop.get(q.all_of(dept=dept_row, month=month_row))['file']
+
 
 @anvil.server.callable
 def download_template(type):

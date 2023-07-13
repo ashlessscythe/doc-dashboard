@@ -12,6 +12,7 @@ from .. import State
 from ..DocumentDashboard import DocumentDashboard
 from ..SummaryPlots import SummaryPlots
 from ..TemplateDownload import TemplateDownload
+from ..SOPDownload import SOPDownload
 
 class Main(MainTemplate):
   def __init__(self, **properties):
@@ -62,6 +63,17 @@ class Main(MainTemplate):
       dismissible=True,
       role='card'
     )
+
+  def schedule_btn_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    alert(
+      content=SOPDownload(),
+      buttons=None,
+      large=True,
+      dismissible=True,
+      role='card'
+    )
+
 
 
 
