@@ -17,7 +17,6 @@ def get_user_documents(status=None, dept_filter=None):
     d['submitted_by'] = anvil.users.get_user()
   if status != None:
     d['status'] = app_tables.document_status.get(status=status)
-    print(f"post status is {d['status']}")
   if dept_filter != None:
     d['dept'] = app_tables.departments.get(dept=dept_filter)
     print(f"filter is {dept_filter}")
@@ -27,14 +26,17 @@ def get_user_documents(status=None, dept_filter=None):
 def add_document(doc):
   print(f"document dict is {doc}")
   # document dict is {'dept': 'DCS', 'type': 'observation', 'description': 'obs', 'attachment': <anvil._serialise.StreamingMedia object at 0x7f39117359f0>}
+  # if description is blank, write no_description (used as link for summary modal)
+  desc = [doc['description'] if len(doc['description']) > 1 else 'no_description']
   app_tables.documents.add_row(
     created=datetime.now(), 
     status=app_tables.document_status.get(status='pending'), 
     submitted_by=anvil.users.get_user(), 
     dept=app_tables.departments.get(dept=doc['dept']),
     type=app_tables.document_type.get(type=doc['type']),
-    description=doc['description'],
-    attachment=doc['attachment']
+    description=desc,
+    attachment=doc['attachment'],
+    deleted=False
   )
 
 @anvil.server.callable(require_user=True)

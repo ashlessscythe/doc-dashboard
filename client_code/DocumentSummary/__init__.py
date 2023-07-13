@@ -14,9 +14,9 @@ class DocumentSummary(DocumentSummaryTemplate):
     self.init_components(**properties)
 
     print(f"status is {status}")
-    if status['status'] not in(['rejected', 'followup']):
-      self.label_8.visible = False
-      self.reason_label.visible = False
+    # if status['status'] not in(['rejected', 'followup']):
+    #   self.label_8.visible = False
+    #   self.reason_label.visible = False
 
   def download_button_click(self, **event_args):
     if self.item['attachment'] != None:

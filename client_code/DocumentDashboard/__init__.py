@@ -23,7 +23,7 @@ class DocumentDashboard(DocumentDashboardTemplate):
       self.label_filter.visible = False
       self.dd_filter.visible = False
       self.btn_apply.visible = False
-    self.rp.items = anvil.server.call('get_user_documents', State.status)
+    self.rp.items = anvil.server.call('get_user_documents', State.status, State.dept_filter)
 
   def new_document_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -38,8 +38,8 @@ class DocumentDashboard(DocumentDashboardTemplate):
     self.refresh_data_bindings()
 
   def filter_table(self, **event_args):
-    dept_filter = self.dd_filter.selected_value
-    self.rp.items = anvil.server.call('get_user_documents', State.status, dept_filter)
+    State.dept_filter = self.dd_filter.selected_value
+    self.rp.items = anvil.server.call('get_user_documents', State.status, State.dept_filter)
   
   def btn_apply_click(self, **event_args):
     """This method is called when the button is clicked"""
