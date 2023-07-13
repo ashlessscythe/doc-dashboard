@@ -20,7 +20,7 @@ def get_user_documents(status=None, dept_filter=None):
     print(f"post status is {d['status']}")
   if dept_filter != None:
     d['dept'] = app_tables.departments.get(dept=dept_filter)
-    print(f"filter is {filter}")
+    print(f"filter is {dept_filter}")
   return app_tables.documents.search(tables.order_by('created', ascending=False), **d)
 
 @anvil.server.callable(require_user=True)
