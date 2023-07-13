@@ -63,20 +63,21 @@ class RowTemplate1(RowTemplate1Template):
 
   def delete_click(self, **event_args):
     """This method is called when the button is clicked"""
-    msg = alert(
+    msg = {}
+    if alert(
       content=_ConfirmDelete, 
       title='Confirm Delete',
       large=True,
       buttons=[
         ("Yes", True),
         ("No", False)
-      ])
-    if msg == True:
-      # anvil.server.call('delete_doc', self.item)
+      ]):
       print(f"msg is {msg}")
+      # anvil.server.call('delete_doc', self.item)
       Notification(message='Delete would be called here...')
     else:
       Notification(message='Not deleting...')
+    print(f"refreshing")
     self.refresh_data_bindings()
 
 
