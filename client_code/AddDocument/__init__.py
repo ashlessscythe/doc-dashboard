@@ -13,13 +13,26 @@ class AddDocument(AddDocumentTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.message_pill_1.visible = False
+    self.save_button.enabled = False
     # initialize drop-downs
     self.dept_dd.items = [(d['dept']) for d in anvil.server.call('get_depts')]
     self.type_dd.items = [(t['type']) for t in anvil.server.call('get_types')]
 
   def doc_upload_change(self, file, **event_args):
     """This method is called when a new file is loaded into this FileLoader"""
-    self.item['attachment'] = file
+    print(f"file length is {file.length}")
+    if file.length == 0:
+      pass
+    elif file.length > 1024*1024:
+      alert(
+        content='File too large...',
+        title='Size exception',
+        buttons=("OK"),
+        dismissible=True
+      )
+    else:
+      self.save_button.enabled = True
+      self.item['attachment'] = file
 
   def save_button_click(self, **event_args):
     """This method is called when the button is clicked"""
