@@ -11,8 +11,8 @@ from anvil.tables import app_tables
 from .. import State
 from ..DocumentDashboard import DocumentDashboard
 from ..SummaryPlots import SummaryPlots
-from ..TemplateDownload import TemplateDownload
-from ..SOPDownload import SOPDownload
+from ..DownloadTemplate import DownloadTemplate
+from ..DownloadSOP import DownloadSOP
 
 class Main(MainTemplate):
   def __init__(self, **properties):
@@ -54,11 +54,11 @@ class Main(MainTemplate):
 
   def templates_btn_click(self, **event_args):
     # self.content_panel.clear()
-    # self.content_panel.add_component(TemplateDownload())
+    # self.content_panel.add_component(DownloadTemplate())
     # try with alert
     alert(
-      content=TemplateDownload(),
-      buttons=None,
+      content=DownloadTemplate(),
+      buttons=["Close"],
       large=True, 
       dismissible=True,
       role='card'
@@ -67,8 +67,8 @@ class Main(MainTemplate):
   def schedule_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
     alert(
-      content=SOPDownload(),
-      buttons=None,
+      content=DownloadSOP(),
+      buttons=["Close"],
       large=True,
       dismissible=True,
       role='card'

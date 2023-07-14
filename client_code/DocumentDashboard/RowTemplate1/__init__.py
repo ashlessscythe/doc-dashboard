@@ -52,14 +52,7 @@ class RowTemplate1(RowTemplate1Template):
     if alert(_FollowupComment(item=msg), large=True, buttons=[("Save", True), ("Cancel", False)]):
       anvil.server.call('followup', self.item, msg['msg'])
     self.refresh_data_bindings()
-
-  def description_link_click(self, **event_args):
-    alert(content=DocumentSummary(item=self.item, status=self.item['status']), large=True)
-
-  def form_refreshing_data_bindings(self, **event_args):
-    """This method is called when refreshing_data_bindings is called"""
-    self.set_styling()
-
+    
   def delete_click(self, **event_args):
     """This method is called when the button is clicked"""
     msg = {'msg':'Really delete?'}
@@ -73,11 +66,21 @@ class RowTemplate1(RowTemplate1Template):
       ]):
       print(f"msg is {msg} item is {self.item}")
       anvil.server.call('delete_doc', self.item)
+      n = Notification(
+        message="Item deleted",
+        timeout=2
+      )
+      n.show()
+      open_form('Main')
       self.refresh_data_bindings()
-    else:
-      Notification(message='Not deleting...')
-      print(f"refreshing")
-      self.refresh_data_bindings()
+      
+  def description_link_click(self, **event_args):
+    alert(content=DocumentSummary(item=self.item, status=self.item['status']), large=True)
+
+  def form_refreshing_data_bindings(self, **event_args):
+    """This method is called when refreshing_data_bindings is called"""
+    self.set_styling()
+
 
 
 
