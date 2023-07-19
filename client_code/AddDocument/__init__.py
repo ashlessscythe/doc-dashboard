@@ -23,7 +23,7 @@ class AddDocument(AddDocumentTemplate):
     print(f"file length is {file.length}")
     if file.length == 0:
       pass
-    elif file.length > 1024*1024:
+    elif file.length > 3072*3072:
       alert(
         content='File too large...',
         title='Size exception',
