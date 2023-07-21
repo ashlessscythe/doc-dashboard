@@ -65,6 +65,33 @@ components:
       grid_position: HXJLPP,ZEAVLL
     data_bindings:
     - {property: selected_value, code: 'self.item[''month'']', writeback: true}
+    event_bindings: {change: month_dd_change}
+  - type: DropDown
+    properties:
+      role: null
+      align: full
+      tooltip: ''
+      placeholder: Select SOP
+      border: ''
+      enabled: true
+      foreground: ''
+      items: []
+      visible: false
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
+    name: sop_dd
+    layout_properties:
+      col_widths: {}
+      grid_position: HXJLPP,QQCBQH
+    data_bindings:
+    - {property: selected_value, code: 'self.item[''sop'']', writeback: true}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Download SOP, font_size: null, font: '',

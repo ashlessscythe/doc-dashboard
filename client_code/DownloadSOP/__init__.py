@@ -22,18 +22,30 @@ class DownloadSOP(DownloadSOPTemplate):
       anvil.server.call(
         'download_sop', 
         self.item['dept'], 
-        self.item['month']
+        self.item['month'],
+        self.item['sop']
       )
     )
 
   def dept_dd_change(self, **event_args):
     """This method is called when an item is selected"""
     # get months for dept
-    dd_items = [(d['month']['month']) for d in anvil.server.call('get_sops', self.item['dept'])]
-    self.month_dd.items = dd_items
+    dd_items = [(d['month']['month']) for d in anvil.server.call('get_sop_months', self.item['dept'])]
+    self.month_dd.items = set(dd_items)
     self.month_dd.visible = True
     if len(dd_items) > 0:
       self.month_dd.placeholder = 'Select Month'
     else:
       self.month_dd.placeholder = 'No SOP for selected dept'
+
+  def month_dd_change(self, **event_args):
+    """This method is called when an item is selected"""
+    dd_items = [(s['name']) for s in anvil.server.call('get_sops', self.item['dept'], self.item['month'])]
+    self.sop_dd.items = dd_items
+    self.sop_dd.visible = True
+    if len(dd_items) > 0:
+      self.sop_dd.placeholder = 'Select SOP'
+    else:
+      self.sop_dd.placeholder = 'No SOP for selected dept'
+
 
