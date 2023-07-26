@@ -23,12 +23,13 @@ services:
 startup: {type: form, module: Login}
 package_name: Rally_theme
 allow_embedding: false
-name: Document Tracker
+name: ISO / PQS Document Tracker
 runtime_options:
   version: 2
   client_version: '3'
   server_version: python3-full
   server_spec: {base: python310-standard}
+metadata: {logo_img: 'asset:iridium_IDuiUZQAz4.png'}
 startup_form: null
 native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap"
     rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
