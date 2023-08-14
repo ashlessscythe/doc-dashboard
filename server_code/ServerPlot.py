@@ -35,9 +35,9 @@ def get_status_data():
   df['quarter'] = df['created'].dt.quarter
 
   # separate dfs
-  df_stat = df.groupby(by=['status']).size().reset_index(name='count')
-  df_dept = df.groupby(by=['dept', 'week']).size().reset_index(name='count')
-  df_date = df.groupby(by=['type', 'dept', 'week', 'quarter']).size().reset_index(name='count')
+  df_stat = df.groupby(by=['status', 'quarter']).size().reset_index(name='count')
+  df_dept = df.groupby(by=['dept', 'week', 'type']).size().reset_index(name='count')
+  df_date = df.groupby(by=['status', 'dept', 'type', 'created', 'quarter']).size().reset_index(name='count')
   return df_stat, df_dept, df_date
 
 @anvil.server.callable
@@ -48,13 +48,15 @@ def create_plots():
   fig1 = px.pie(
     df_stat,
     names='status',
-    values='count',    
+    values='count',
+    facet_col='quarter',
+    facet_col_wrap=2,
     title='Docs by status'
   )
 
   fig2 = px.bar(
     df_dept,
-    x='week',
+    x='type',
     y='count',
     color='dept',
     title="Total Docs by Dept"
@@ -65,16 +67,15 @@ def create_plots():
     annotation_text='minimum', 
     annotation_position='top left'
   )
-
+  
   fig3 = px.density_heatmap(
     df_date, 
-    x='week', 
-    y='type',
-    facet_col='dept',
-    facet_col_wrap=2,
-    color_continuous_scale="Viridis",
+    x='created',
+    y='status',
+    marginal_x='histogram',
+    marginal_y='histogram',
     title='Docs through time'
   )
-  fig3.update_xaxes(matches=None)
   
   return fig1, fig2, fig3
+  
