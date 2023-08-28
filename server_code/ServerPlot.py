@@ -32,18 +32,20 @@ def get_status_data():
   # format date
   df['created'] = pd.to_datetime(df['created'], utc=True)
   df['week'] = df['created'].dt.isocalendar().week
+  df['month'] = df['created'].dt.month
   df['quarter'] = df['created'].dt.quarter
 
   # separate dfs
   df_stat = df.groupby(by=['status', 'quarter']).size().reset_index(name='count')
   df_dept = df.groupby(by=['dept', 'week', 'type']).size().reset_index(name='count')
   df_date = df.groupby(by=['status', 'dept', 'type', 'created', 'quarter']).size().reset_index(name='count')
-  return df_stat, df_dept, df_date
+  df_type = df.groupby(by=['type', 'status', 'dept', 'month']).size().reset_index(name='count')
+  return df_stat, df_dept, df_date, df_type
 
 @anvil.server.callable
 def create_plots():
-  df_stat, df_dept, df_date = get_status_data()
-  [print(df.head()) for df in [df_stat, df_dept, df_date]]
+  df_stat, df_dept, df_date, df_type = get_status_data()
+  [print(df.head()) for df in [df_stat, df_dept, df_date, df_type]]
   
   fig1 = px.pie(
     df_stat,
@@ -76,6 +78,16 @@ def create_plots():
     marginal_y='histogram',
     title='Docs through time'
   )
-  
-  return fig1, fig2, fig3
+
+  sops = df_type[df_type['type'] == 'sop review']
+  approved = sops[sops['status'] == 'approved']
+  fig4 = px.line(
+    df_type,
+    x='month',
+    y=approved,
+    facet_col='dept',
+    facet_col_wrap=2,
+    title='Docs by Date'
+  )
+  return fig1, fig2, fig4
   
