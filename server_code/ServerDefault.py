@@ -97,6 +97,10 @@ def get_types():
   return app_tables.document_type.search()
 
 @anvil.server.callable
+def get_users():
+  return app_tables.documents.search()
+
+@anvil.server.callable
 def get_sop_months(dept):
   return app_tables.sop.search(dept=app_tables.departments.get(dept=dept))
 
