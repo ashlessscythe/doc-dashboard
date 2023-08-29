@@ -10,16 +10,18 @@ import anvil.pdf
 from datetime import datetime
 
 @anvil.server.callable(require_user=True)
-def get_user_documents(status=None, dept_filter=None):
+def get_user_documents(status=None, filters=None):
   d = {}
   d['deleted'] = False
   if anvil.users.get_user()['role'] != 'admin':
     d['submitted_by'] = anvil.users.get_user()
   if status != None:
     d['status'] = app_tables.document_status.get(status=status)
-  if dept_filter != None:
-    d['dept'] = app_tables.departments.get(dept=dept_filter)
-    print(f"filter is {dept_filter}")
+  if filters['dept'] != None:
+    d['dept'] = app_tables.departments.get(dept=filters['dept'])
+    print(f"filter is {filters['dept']}")
+  if filters['user'] != None:
+    d['submitted_by'] = app_tables.users.get(email=filters['user'])
   return app_tables.documents.search(tables.order_by('created', ascending=False), **d)
 
 @anvil.server.callable(require_user=True)
@@ -97,8 +99,16 @@ def get_types():
   return app_tables.document_type.search()
 
 @anvil.server.callable
-def get_users():
-  return app_tables.documents.search()
+def get_unique_emails():
+    unique_emails = set()
+    documents = app_tables.documents.search()
+    for doc in documents:
+        user_row = doc['submitted_by']
+        if user_row:
+            email = user_row['email']
+            unique_emails.add(email)
+            
+    return list(unique_emails)
 
 @anvil.server.callable
 def get_sop_months(dept):
