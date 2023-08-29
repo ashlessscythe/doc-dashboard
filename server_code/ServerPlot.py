@@ -39,7 +39,7 @@ def get_status_data():
 
   # separate dfs
   df_stat = df.groupby(by=['status', 'quarter']).size().reset_index(name='count')
-  df_dept = df.groupby(by=['dept', 'week', 'type']).size().reset_index(name='count')
+  df_dept = df.groupby(by=['dept', 'month', 'type']).size().reset_index(name='count')
   df_date = df.groupby(by=['status', 'dept', 'type', 'created', 'quarter']).size().reset_index(name='count')
   df_type = df.groupby(by=['type', 'status', 'dept', 'month']).size().reset_index(name='count')
   return df_stat, df_dept, df_date, df_type
@@ -58,18 +58,72 @@ def create_plots():
     title='Docs by status'
   )
 
-  fig2 = px.bar(
-    df_dept,
-    x='type',
-    y='count',
-    color='dept',
-    title="Total Docs by Dept"
+  # Initialize figure
+  fig2 = go.Figure()
+  
+  # Create traces
+  for month in df_dept['month'].unique():
+      for dept in df_dept['dept'].unique():
+          for doc_type in df_dept['type'].unique():
+              df_filtered = df_dept[(df_dept['month'] == month) & (df_dept['dept'] == dept) & (df_dept['type'] == doc_type)]
+              fig2.add_trace(go.Bar(
+                  x=[dept],
+                  y=df_filtered['count'],
+                  name=f"{doc_type} ({calendar.month_abbr[int(month)]})",
+                  showlegend=False,
+                  visible=(month == df_dept['month'].min())
+              ))
+            
+  # Add dummy traces for all unique types to ensure they appear in the legend
+  min_month = df_dept['month'].min()
+  for type in df_dept['type'].unique():
+      fig2.add_trace(go.Bar(
+          x=[None],
+          y=[None],
+          name=type,
+          showlegend=True,
+          visible=True if month == min_month else 'legendonly'
+      ))
+    
+  # Add horizontal line
+  fig2.add_shape(
+      go.layout.Shape(
+          type="line",
+          x0=min(df_dept['dept']),
+          x1=max(df_dept['dept']),
+          y0=2,
+          y1=2,
+          line=dict(dash="dot")
+      )
   )
-  fig2.add_hline(
-    y=2, 
-    line_dash='dot', 
-    annotation_text='minimum', 
-    annotation_position='top left'
+  
+  # create dropdown
+  month_buttons = []
+  for month in df_dept['month'].unique():
+    visibility_array = [month == m for m in df_dept['month']]
+    month_buttons.append(
+      dict(
+        args=[{"visible": visibility_array}],
+        label=calendar.month_abbr[int(month)],
+        method="update"
+      )
+    )
+  # add dropdown to layout
+  fig2.update_layout(
+    title='Total Docs by Dept',
+    barmode='stack',
+    updatemenus=[
+      dict(
+        buttons=month_buttons,
+        direction="down",
+        pad={"r": 10, "t": 10},
+        showactive=True,
+        x=0.1,
+        xanchor="left",
+        y=1.15,
+        yanchor="top"
+      )
+    ]
   )
   
   fig3 = px.density_heatmap(
