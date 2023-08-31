@@ -28,14 +28,14 @@ components:
       foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
     name: flow_panel_3
     layout_properties: {grid_position: 'SJYATC,WOFRNQ'}
-    components:
-    - type: Label
-      properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
-        visible: true, text: 'Filter by Dept:', font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
-      name: label_dept_filter
-      layout_properties: {grid_position: 'SJYATC,BXUKAD'}
+    components: []
+  - type: Label
+    properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Filter by Dept:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_dept_filter
+    layout_properties: {grid_position: 'SJYATC,OQIRQC'}
   - type: DropDown
     properties:
       role: null
