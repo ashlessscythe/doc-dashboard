@@ -17,11 +17,12 @@ def get_user_documents(status=None, filters=None):
     d['submitted_by'] = anvil.users.get_user()
   if status != None:
     d['status'] = app_tables.document_status.get(status=status)
-  if filters['dept'] != None:
-    d['dept'] = app_tables.departments.get(dept=filters['dept'])
-    print(f"filter is {filters['dept']}")
-  if filters['user'] != None:
-    d['submitted_by'] = app_tables.users.get(email=filters['user'])
+  if filters !=None:
+    if filters['dept'] != None:
+      d['dept'] = app_tables.departments.get(dept=filters['dept'])
+      print(f"filter is {filters['dept']}")
+    if filters['user'] != None:
+      d['submitted_by'] = app_tables.users.get(email=filters['user'])
   return app_tables.documents.search(tables.order_by('created', ascending=False), **d)
 
 @anvil.server.callable(require_user=True)
