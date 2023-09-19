@@ -25,7 +25,8 @@ def get_df():
       'description':r['description'],
       'message':r['status_change_message'],
       'created':r['created']
-    } for r in data]
+    } for r in data if not r.get('deleted', False)
+  ]
   df = pd.DataFrame.from_dict(dicts)
   return df
 
@@ -49,20 +50,30 @@ def create_plots():
   df_stat, df_dept, df_date, df_type = get_status_data()
   [print(df) for df in [df_stat, df_dept, df_date, df_type]]
   
-  fig1 = px.pie(
-    df_stat,
-    names='status',
-    values='count',
-    facet_col='quarter',
-    facet_col_wrap=2,
-    title='Docs by status'
-  )
+  # Initialize subplots for pie charts
+  quarters = df_stat['quarter'].unique()
+  n_quarters = len(quarters)
+  fig1 = make_subplots(rows=1, cols=n_quarters, specs=[[{'type':'domain'}]*n_quarters], subplot_titles=[f'Quarter {q}' for q in quarters])
+  
+  # Add pie charts for each quarter
+  for i, quarter in enumerate(quarters, start=1):
+      df_filtered = df_stat[df_stat['quarter'] == quarter]
+      fig1.add_trace(
+          go.Pie(labels=df_filtered['status'], values=df_filtered['count'], name=f'Quarter {quarter}'),
+          row=1, col=i
+      )
+  
+  # Update layout
+  fig1.update_layout(title_text='Docs by Status')
 
   # Initialize figure
   fig2 = go.Figure()
   
   # Create traces
+  trace_indices_by_month = {}
+  trace_index = 0
   for month in df_dept['month'].unique():
+      trace_indices_by_month[month] = []
       for dept in df_dept['dept'].unique():
           for doc_type in df_dept['type'].unique():
               df_filtered = df_dept[(df_dept['month'] == month) & (df_dept['dept'] == dept) & (df_dept['type'] == doc_type)]
@@ -73,6 +84,8 @@ def create_plots():
                   showlegend=False,
                   visible=(month == df_dept['month'].min())
               ))
+              trace_indices_by_month[month].append(trace_index)
+              trace_index += 1
             
   # Add dummy traces for all unique types to ensure they appear in the legend
   min_month = df_dept['month'].min()
@@ -99,15 +112,19 @@ def create_plots():
   
   # create dropdown
   month_buttons = []
+  total_traces = len(fig2.data)
   for month in df_dept['month'].unique():
-    visibility_array = [month == m for m in df_dept['month']]
-    month_buttons.append(
-      dict(
-        args=[{"visible": visibility_array}],
-        label=calendar.month_abbr[int(month)],
-        method="update"
+      visibility_array = [False] * total_traces  # Initialize with all False
+      for index in trace_indices_by_month[month]:
+          visibility_array[index] = True  # Set visibility to True for relevant traces
+      month_buttons.append(
+        dict(
+          args=[{"visible": visibility_array}],
+          label=calendar.month_abbr[int(month)],
+          method="update"
+        )
       )
-    )
+    
   # add dropdown to layout
   fig2.update_layout(
     title='Total Docs by Dept',
