@@ -23,6 +23,8 @@ def get_user_documents(status=None, filters=None):
       print(f"filter is {filters['dept']}")
     if filters['user'] != None:
       d['submitted_by'] = app_tables.users.get(email=filters['user'])
+    if filters['type'] != None:
+      d['type'] = app_tables.document_type.get(type=filters['type'])
   return app_tables.documents.search(tables.order_by('created', ascending=False), **d)
 
 @anvil.server.callable(require_user=True)

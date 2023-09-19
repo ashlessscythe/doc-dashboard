@@ -47,7 +47,7 @@ def get_status_data():
 @anvil.server.callable
 def create_plots():
   df_stat, df_dept, df_date, df_type = get_status_data()
-  [print(df.head()) for df in [df_stat, df_dept, df_date, df_type]]
+  [print(df) for df in [df_stat, df_dept, df_date, df_type]]
   
   fig1 = px.pie(
     df_stat,
@@ -126,14 +126,14 @@ def create_plots():
     ]
   )
   
-  fig3 = px.density_heatmap(
-    df_date, 
-    x='created',
-    y='status',
-    marginal_x='histogram',
-    marginal_y='histogram',
-    title='Docs through time'
-  )
+  # fig3 = px.density_heatmap(
+  #   df_date, 
+  #   x='created',
+  #   y='status',
+  #   marginal_x='histogram',
+  #   marginal_y='histogram',
+  #   title='Docs through time'
+  # )
 
   # Filter to only include data that has 'month' information
   df_type = df_type[df_type['month'].notna()]
@@ -152,10 +152,10 @@ def create_plots():
   #               facet_col='dept')
   
   # Filter by type 'SOP Review'
-  df_type = df_type[df_type['type'] == 'sop review']
+  df_sop = df_type[df_type['type'] == 'sop review']
 
   # Create subplots
-  fig4 = make_subplots(rows=1, cols=len(df_type['dept'].unique()), subplot_titles=df_type['dept'].unique())
+  fig4 = make_subplots(rows=1, cols=len(df_sop['dept'].unique()), subplot_titles=df_sop['dept'].unique())
   
   color_map = {'approved': 'green', 'pending': 'orange', 'followup': 'purple', 'rejected': 'red'}  # Add more statuses and colors as needed
 
@@ -163,9 +163,9 @@ def create_plots():
   all_traces = []
   
   col = 1
-  for dept in df_type['dept'].unique():
-      for status in df_type['status'].unique():
-          df_filtered = df_type[(df_type['dept'] == dept) & (df_type['status'] == status)]
+  for dept in df_sop['dept'].unique():
+      for status in df_sop['status'].unique():
+          df_filtered = df_sop[(df_sop['dept'] == dept) & (df_sop['status'] == status)]
           text_labels = [f"{count} ({status})" for count in df_filtered['count']]
           fig4.add_trace(go.Bar(
               x=df_filtered['month'],
@@ -181,7 +181,7 @@ def create_plots():
       col += 1
 
   # Add dummy traces for all unique statuses to ensure they appear in the legend
-  for status in df_type['status'].unique():
+  for status in df_sop['status'].unique():
       fig4.add_trace(go.Bar(
           x=[None],
           y=[None],
@@ -191,7 +191,7 @@ def create_plots():
           visible=False
       ))
       
-  for dept in df_type['dept'].unique():
+  for dept in df_sop['dept'].unique():
       visibility_array = [dept == trace for trace in all_traces]
       dept_buttons.append(
           dict(
@@ -211,7 +211,7 @@ def create_plots():
   # fig4.add_trace(table_trace)
 
   # Make the first set of traces visible by default
-  for i in range(len(df_type['status'].unique())):
+  for i in range(len(df_sop['status'].unique())):
       fig4.data[i].visible = True
 
   fig4.update_layout(

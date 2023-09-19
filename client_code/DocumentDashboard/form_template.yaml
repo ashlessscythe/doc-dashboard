@@ -1,7 +1,7 @@
 container: {type: ColumnPanel}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"WOFRNQ":11,"QMNWIM":8,"JFBIXX":15,"BKGWOI":10,"UEOSPL":6,"IBIRPJ":10}'}
+  properties: {col_widths: '{"WOFRNQ":9,"QMNWIM":6,"JFBIXX":12,"BKGWOI":8,"UEOSPL":5,"IBIRPJ":8,"OQIRQC":6,"SHCHZW":6}'}
   name: column_panel_1_copy
   layout_properties:
     col_widths: {}
@@ -93,6 +93,37 @@ components:
     data_bindings:
     - {property: selected_value, code: 'self.item[''filter_user'']', writeback: true}
     event_bindings: {change: dd_filter_change}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Filter by Type:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_type_filter
+    layout_properties: {grid_position: 'SJYATC,SHCHZW'}
+  - type: DropDown
+    properties:
+      role: null
+      align: full
+      tooltip: ''
+      placeholder: Type Filter
+      border: ''
+      enabled: true
+      foreground: ''
+      items: []
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
+    name: dd_type_filter
+    layout_properties: {grid_position: 'SJYATC,MYNJTX'}
+    data_bindings:
+    - {property: selected_value, code: 'self.item[''filter_type'']', writeback: true}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Apply Filter, font_size: null, font: '',
@@ -145,4 +176,13 @@ components:
     properties: {spacing_above: none, spacing_below: none, item_template: DocumentDashboard.RowTemplate1}
     name: rp
     layout_properties: {}
+- type: Label
+  properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
+    visible: true, text: 'Filter by Dept:', font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: label_dept_filter_copy
+  layout_properties:
+    col_widths: {}
+    grid_position: HIJNSA,OAQSOC
 is_package: true

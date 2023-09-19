@@ -18,6 +18,7 @@ class DocumentDashboard(DocumentDashboardTemplate):
     State.status = status
     self.dd_dept_filter.items = [(d['dept']) for d in anvil.server.call('get_depts')]
     self.dd_user_filter.items = [(e, e) for e in anvil.server.call('get_unique_emails')]
+    self.dd_type_filter.items = [(t['type']) for t in anvil.server.call('get_types')]
     filters = {
       'dept': State.dept_filter,
       'user': State.user_filter,
@@ -31,6 +32,8 @@ class DocumentDashboard(DocumentDashboardTemplate):
       self.dd_dept_filter.visible = False
       self.label_user_filter.visible = False
       self.dd_user_filter.visible = False
+      self.label_type_filter.visible = False
+      self.dd_type_filter.visible = False
       self.btn_apply.visible = False
     self.rp.items = anvil.server.call('get_user_documents', State.status, filters)
 
@@ -51,6 +54,7 @@ class DocumentDashboard(DocumentDashboardTemplate):
     filters = {}
     filters['dept'] = self.dd_dept_filter.selected_value
     filters['user'] = self.dd_user_filter.selected_value
+    filters['type'] = self.dd_type_filter.selected_value
     print(f"filters is {filters}")
     self.rp.items = anvil.server.call('get_user_documents', State.status, filters)
   
