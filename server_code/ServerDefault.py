@@ -13,7 +13,7 @@ from datetime import datetime
 def get_user_documents(status=None, filters=None):
   d = {}
   d['deleted'] = False
-  if anvil.users.get_user()['role'] != 'admin':
+  if anvil.users.get_user()['role'] not in ['admin', 'approver']:
     d['submitted_by'] = anvil.users.get_user()
   if status != None:
     d['status'] = app_tables.document_status.get(status=status)
@@ -51,7 +51,7 @@ def delete_doc(row):
   row.update(deleted=True, deleted_by=app_tables.users.get(email=anvil.users.get_user()['email']), deleted_on=datetime.now())
 
 def is_admin(user):
-  return user['role'] == 'admin'
+  return user['role'] in ['admin', 'approver']
 
 @anvil.server.background_task
 def send_email(user, message):

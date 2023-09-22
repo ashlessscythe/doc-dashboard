@@ -20,7 +20,7 @@ class RowTemplate1(RowTemplate1Template):
     self.init_components(**properties)
 
     # Any code you write here will run when the form opens.
-    self.btns_panel.visible = (State.user['role'] == 'admin')
+    self.btns_panel.visible = (State.user['role'] == 'approver')
     self.delete.visible = True
 
   def set_styling(self):
