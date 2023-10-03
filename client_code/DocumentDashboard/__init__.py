@@ -26,7 +26,7 @@ class DocumentDashboard(DocumentDashboardTemplate):
       'type': State.type_filter
     }
 
-    if State.user['role'] != 'approver':
+    if not State.user['role'] in ['approver', 'admin']:
       # self.data_view.columns = self.data_view.columns[:-1]
       self.label_dept_filter.visible = False
       self.dd_dept_filter.visible = False
