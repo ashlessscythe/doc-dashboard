@@ -20,7 +20,7 @@ class Main(MainTemplate):
     self.init_components(**properties)
     
     self.switch_to_dashboard(None)
-    if State.user['role'] == 'admin':
+    if State.user['role'] in ['admin', 'approver']:
       self.separator_label_2.visible = True
       self.summary_btn.visible = True
       self.summary_btn.enabled = True
