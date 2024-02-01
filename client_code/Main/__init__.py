@@ -75,21 +75,3 @@ class Main(MainTemplate):
     )
 
 
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
