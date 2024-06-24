@@ -1,194 +1,207 @@
 dependencies:
-- app_id: C6ZZPAPN4YYF5NVJ
-  version: {dev: false}
+  - app_id: C6ZZPAPN4YYF5NVJ
+    version: { dev: false }
 services:
-- source: /runtime/services/tables.yml
-  client_config: {enable_v2: true}
-  server_config: {}
-- source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: true, enable_automatically: false, use_email: true, confirm_email: true, use_google: true}
-  server_config:
-    user_table: users
-    email_content:
-      confirm_address: {html: '<p>Thanks for registering your account with us. Please click the following link to confirm that this is your account:</p><p>{{confirm_link}}.</p><p><br></p><p>Note that after confirming, account needs to be activated by an admin.</p><p><br></p><p>Thanks,</p><p>Admin</p>'}
-- source: /runtime/services/google.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/anvil/email.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/anvil/files.yml
-  client_config: {}
-  server_config: {file_table: files}
-startup: {type: form, module: Login}
+  - source: /runtime/services/tables.yml
+    client_config: { enable_v2: true }
+    server_config: {}
+  - source: /runtime/services/anvil/users.yml
+    client_config:
+      {
+        allow_signup: true,
+        enable_automatically: false,
+        use_email: true,
+        confirm_email: true,
+        use_google: false,
+      }
+    server_config:
+      user_table: users
+      email_content:
+        confirm_address:
+          {
+            html: "<p>Thanks for registering your account with us. Please click the following link to confirm that this is your account:</p><p>{{confirm_link}}.</p><p><br></p><p>Note that after confirming, account needs to be activated by an admin.</p><p><br></p><p>Thanks,</p><p>Admin</p>",
+          }
+  - source: /runtime/services/google.yml
+    client_config: {}
+    server_config: {}
+  - source: /runtime/services/anvil/email.yml
+    client_config: {}
+    server_config: {}
+  - source: /runtime/services/anvil/files.yml
+    client_config: {}
+    server_config: { file_table: files }
+startup: { type: form, module: Login }
 package_name: Rally_theme
 allow_embedding: false
 name: ISO / PQS Document Tracker
 runtime_options:
   version: 2
-  client_version: '3'
+  client_version: "3"
   server_version: python3-full
-  server_spec: {base: python310-standard}
-metadata: {logo_img: 'asset:iridium_IDuiUZQAz4.png'}
+  server_spec: { base: python310-standard }
+metadata: { logo_img: "asset:iridium_IDuiUZQAz4.png" }
 startup_form: null
-native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
+native_deps:
+  {
+    head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">',
+  }
 db_schema:
   document_type:
     client: none
     server: full
     columns:
-    - name: type
-      admin_ui: {width: 200}
-      type: string
+      - name: type
+        admin_ui: { width: 200 }
+        type: string
     title: document_type
   document_status:
     client: none
     server: full
     columns:
-    - name: status
-      admin_ui: {width: 200}
-      type: string
+      - name: status
+        admin_ui: { width: 200 }
+        type: string
     title: document_status
   months:
     client: none
     server: full
     columns:
-    - name: month
-      admin_ui: {order: 0, width: 200}
-      type: string
+      - name: month
+        admin_ui: { order: 0, width: 200 }
+        type: string
     title: months
   sop:
     client: none
     server: full
     columns:
-    - name: name
-      admin_ui: {order: 0, width: 200}
-      type: string
-    - name: file
-      admin_ui: {order: 1, width: 200}
-      type: media
-    - name: dept
-      admin_ui: {order: 0.5, width: 200}
-      type: link_single
-      target: departments
-    - name: month
-      admin_ui: {order: 0.75, width: 200}
-      type: link_single
-      target: months
+      - name: name
+        admin_ui: { order: 0, width: 200 }
+        type: string
+      - name: file
+        admin_ui: { order: 1, width: 200 }
+        type: media
+      - name: dept
+        admin_ui: { order: 0.5, width: 200 }
+        type: link_single
+        target: departments
+      - name: month
+        admin_ui: { order: 0.75, width: 200 }
+        type: link_single
+        target: months
     title: sop
   files:
     client: none
     server: full
     columns:
-    - name: path
-      admin_ui: {order: 0, width: 200}
-      type: string
-    - name: file
-      admin_ui: {order: 1, width: 200}
-      type: media
-    - name: file_version
-      admin_ui: {order: 2, width: 200}
-      type: string
+      - name: path
+        admin_ui: { order: 0, width: 200 }
+        type: string
+      - name: file
+        admin_ui: { order: 1, width: 200 }
+        type: media
+      - name: file_version
+        admin_ui: { order: 2, width: 200 }
+        type: string
     title: Files
   departments:
     title: departments
     client: none
     server: full
     columns:
-    - name: dept
-      admin_ui: {width: 200}
-      type: string
+      - name: dept
+        admin_ui: { width: 200 }
+        type: string
   users:
     title: Users
     client: none
     server: full
     columns:
-    - name: email
-      admin_ui: {width: 200}
-      type: string
-    - name: enabled
-      admin_ui: {width: 200}
-      type: bool
-    - name: last_login
-      admin_ui: {width: 200}
-      type: datetime
-    - name: password_hash
-      admin_ui: {width: 200}
-      type: string
-    - name: n_password_failures
-      admin_ui: {width: 200}
-      type: number
-    - name: confirmed_email
-      admin_ui: {width: 200}
-      type: bool
-    - name: signed_up
-      admin_ui: {width: 200}
-      type: datetime
-    - name: email_confirmation_key
-      admin_ui: {width: 200}
-      type: string
-    - name: role
-      admin_ui: {width: 200}
-      type: string
-    - name: display_name
-      admin_ui: {order: 9, width: 200}
-      type: string
-    - name: dept
-      admin_ui: {order: 10, width: 200}
-      type: link_single
-      target: departments
+      - name: email
+        admin_ui: { width: 200 }
+        type: string
+      - name: enabled
+        admin_ui: { width: 200 }
+        type: bool
+      - name: last_login
+        admin_ui: { width: 200 }
+        type: datetime
+      - name: password_hash
+        admin_ui: { width: 200 }
+        type: string
+      - name: n_password_failures
+        admin_ui: { width: 200 }
+        type: number
+      - name: confirmed_email
+        admin_ui: { width: 200 }
+        type: bool
+      - name: signed_up
+        admin_ui: { width: 200 }
+        type: datetime
+      - name: email_confirmation_key
+        admin_ui: { width: 200 }
+        type: string
+      - name: role
+        admin_ui: { width: 200 }
+        type: string
+      - name: display_name
+        admin_ui: { order: 9, width: 200 }
+        type: string
+      - name: dept
+        admin_ui: { order: 10, width: 200 }
+        type: link_single
+        target: departments
   templates:
     client: none
     server: full
     columns:
-    - name: file
-      admin_ui: {order: 1, width: 200}
-      type: media
-    - name: name
-      admin_ui: {order: -1, width: 200}
-      type: link_single
-      target: document_type
+      - name: file
+        admin_ui: { order: 1, width: 200 }
+        type: media
+      - name: name
+        admin_ui: { order: -1, width: 200 }
+        type: link_single
+        target: document_type
     title: templates
   documents:
     title: documents
     client: none
     server: full
     columns:
-    - name: description
-      admin_ui: {width: 200}
-      type: string
-    - name: created
-      admin_ui: {width: 200}
-      type: datetime
-    - name: attachment
-      admin_ui: {width: 200}
-      type: media
-    - name: submitted_by
-      admin_ui: {width: 200}
-      type: link_single
-      target: users
-    - name: status_change_message
-      admin_ui: {width: 200}
-      type: string
-    - name: status
-      admin_ui: {width: 200}
-      type: link_single
-      target: document_status
-    - name: type
-      admin_ui: {width: 200}
-      type: link_single
-      target: document_type
-    - name: dept
-      admin_ui: {width: 200}
-      type: link_single
-      target: departments
-    - name: deleted_by
-      admin_ui: {order: 8, width: 200}
-      type: link_single
-      target: users
-    - name: deleted_on
-      admin_ui: {order: 8, width: 200}
-      type: datetime
-    - name: deleted
-      admin_ui: {order: 8, width: 200}
-      type: bool
+      - name: description
+        admin_ui: { width: 200 }
+        type: string
+      - name: created
+        admin_ui: { width: 200 }
+        type: datetime
+      - name: attachment
+        admin_ui: { width: 200 }
+        type: media
+      - name: submitted_by
+        admin_ui: { width: 200 }
+        type: link_single
+        target: users
+      - name: status_change_message
+        admin_ui: { width: 200 }
+        type: string
+      - name: status
+        admin_ui: { width: 200 }
+        type: link_single
+        target: document_status
+      - name: type
+        admin_ui: { width: 200 }
+        type: link_single
+        target: document_type
+      - name: dept
+        admin_ui: { width: 200 }
+        type: link_single
+        target: departments
+      - name: deleted_by
+        admin_ui: { order: 8, width: 200 }
+        type: link_single
+        target: users
+      - name: deleted_on
+        admin_ui: { order: 8, width: 200 }
+        type: datetime
+      - name: deleted
+        admin_ui: { order: 8, width: 200 }
+        type: bool
