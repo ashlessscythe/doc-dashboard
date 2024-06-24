@@ -15,10 +15,7 @@ components:
   data_bindings:
   - {property: text, code: 'self.item[''created''].strftime(''%Y-%m-%d'')'}
 - type: Label
-  properties: {role: tag, align: center, tooltip: '', border: '', foreground: '',
-    visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
-    spacing_below: small, italic: false, background: 'theme:Light Overlay 3', bold: false,
-    underline: false, icon: ''}
+  properties: {role: tag, align: center, tooltip: '', border: '', foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: 'theme:Light Overlay 3', bold: false, underline: false, icon: ''}
   name: status_label
   layout_properties: {column: QWJODR}
   data_bindings:
@@ -34,34 +31,22 @@ components:
     layout_properties: {column: AXFMLE}
     components:
     - type: Button
-      properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
-        foreground: 'theme:Surface Variant', visible: false, text: Approve, font_size: null,
-        font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-        background: '', bold: false, underline: false, icon: ''}
+      properties: {role: filled, align: center, tooltip: '', border: '', enabled: true, foreground: 'theme:Surface Variant', visible: false, text: Approve, font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: ''}
       name: approve
       layout_properties: {}
       event_bindings: {click: approve_click}
     - type: Button
-      properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
-        foreground: 'theme:Surface Variant', visible: false, text: Reject, font_size: null,
-        font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-        background: '#e35d6a', bold: false, underline: false, icon: ''}
+      properties: {role: filled, align: center, tooltip: '', border: '', enabled: true, foreground: 'theme:Surface Variant', visible: false, text: Reject, font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '#e35d6a', bold: false, underline: false, icon: ''}
       name: reject
       layout_properties: {}
       event_bindings: {click: reject_click}
     - type: Button
-      properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
-        foreground: 'theme:Surface Variant', visible: false, text: FollowUp, font_size: null,
-        font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-        background: '#78C0E0', bold: false, underline: false, icon: ''}
+      properties: {role: filled, align: center, tooltip: '', border: '', enabled: true, foreground: 'theme:Surface Variant', visible: false, text: FollowUp, font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '#78C0E0', bold: false, underline: false, icon: ''}
       name: followup
       layout_properties: {}
       event_bindings: {click: followup_click}
   - type: Button
-    properties: {role: filled, align: center, tooltip: '', border: '', enabled: true,
-      foreground: 'theme:Surface Variant', visible: false, text: Delete, font_size: null,
-      font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '#D64D47', bold: false, underline: false, icon: ''}
+    properties: {role: filled, align: center, tooltip: '', border: '', enabled: true, foreground: 'theme:Surface Variant', visible: false, text: Delete, font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '#D64D47', bold: false, underline: false, icon: ''}
     name: delete
     layout_properties: {column: AXFMLE}
     event_bindings: {click: delete_click}
@@ -73,10 +58,7 @@ components:
   - {property: text, code: 'self.item[''description'']'}
   event_bindings: {click: description_link_click}
 - type: Label
-  properties: {role: tag, align: center, tooltip: '', border: '', foreground: '',
-    visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
-    spacing_below: small, italic: false, background: 'theme:Light Overlay 3', bold: false,
-    underline: false, icon: ''}
+  properties: {role: tag, align: center, tooltip: '', border: '', foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: 'theme:Light Overlay 3', bold: false, underline: false, icon: ''}
   name: type_label
   layout_properties: {column: YURLBE}
   data_bindings:
@@ -86,6 +68,5 @@ components:
   name: submitted_label
   layout_properties: {column: CTFZEQ}
   data_bindings:
-  - {property: text, code: 'self.item[''submitted_by''][''display_name''] if len(self.item[''submitted_by''][''display_name''])
-      > 1 else self.item[''submitted_by''][''email'']'}
+  - {property: text, code: 'self.item[''submitted_by''][''display_name''] if len(self.item[''submitted_by''][''display_name'']) > 1 else self.item[''submitted_by''][''email'']'}
 is_package: true

@@ -6,14 +6,11 @@ services:
   client_config: {enable_v2: true}
   server_config: {}
 - source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: true, enable_automatically: false, use_email: true,
-    confirm_email: true, use_google: false}
+  client_config: {allow_signup: true, enable_automatically: false, use_email: true, confirm_email: true, use_google: false}
   server_config:
     user_table: users
     email_content:
-      confirm_address: {html: '<p>Thanks for registering your account with us. Please
-          click the following link to confirm that this is your account:</p><p>{{confirm_link}}.</p><p><br></p><p>Note
-          that after confirming, account needs to be activated by an admin.</p><p><br></p><p>Thanks,</p><p>Admin</p>'}
+      confirm_address: {html: '<p>Thanks for registering your account with us. Please click the following link to confirm that this is your account:</p><p>{{confirm_link}}.</p><p><br></p><p>Note that after confirming, account needs to be activated by an admin.</p><p><br></p><p>Thanks,</p><p>Admin</p>'}
 - source: /runtime/services/google.yml
   client_config: {}
   server_config: {}
@@ -34,8 +31,7 @@ runtime_options:
   server_spec: {base: python310-standard}
 metadata: {logo_img: 'asset:iridium_IDuiUZQAz4.png'}
 startup_form: null
-native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap"
-    rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
+native_deps: {head_html: '<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">'}
 db_schema:
   document_type:
     client: none

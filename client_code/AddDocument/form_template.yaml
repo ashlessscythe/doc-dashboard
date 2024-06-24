@@ -8,17 +8,11 @@ components:
   layout_properties: {grid_position: 'WZTMFC,PBHWLX'}
   components:
   - type: Label
-    properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: New Document, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: medium, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {role: headline, align: left, tooltip: '', border: '', foreground: '', visible: true, text: New Document, font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: medium, italic: false, background: '', bold: false, underline: false, icon: ''}
     name: label_6
     layout_properties: {grid_position: 'NQVFGA,FCMDNM'}
   - type: Label
-    properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Department, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '', visible: true, text: Department, font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: ''}
     name: label_3
     layout_properties: {grid_position: 'EJEXZK,EQMGDB'}
   - type: DropDown
@@ -47,10 +41,7 @@ components:
     - {property: selected_value, code: 'self.item[''dept'']', writeback: true}
     event_bindings: {change: dept_dd_change}
   - type: Label
-    properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: 'Type:', font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '', visible: true, text: 'Type:', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: ''}
     name: label_4
     layout_properties: {grid_position: 'CCJLJO,SEKRHU'}
   - type: DropDown
@@ -79,26 +70,17 @@ components:
     - {property: selected_value, code: 'self.item[''type'']', writeback: true}
     event_bindings: {change: type_dd_change}
   - type: Label
-    properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: 'Description:', font_size: null, font: '', spacing_above: none,
-      icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '', visible: true, text: 'Description:', font_size: null, font: '', spacing_above: none, icon_align: left, spacing_below: none, italic: false, background: '', bold: false, underline: false, icon: ''}
     name: label_1
     layout_properties: {grid_position: 'MZWDVS,ZZPQEC'}
   - type: TextArea
-    properties: {role: null, align: left, height: '', tooltip: '', placeholder: Additional info,
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-      auto_expand: false, font: '', spacing_above: small, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
+    properties: {role: null, align: left, height: '', tooltip: '', placeholder: Additional info, border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null, auto_expand: false, font: '', spacing_above: small, spacing_below: small, italic: false, background: '', bold: false, underline: false}
     name: description_box
     layout_properties: {grid_position: 'MZWDVS,UNCRCU'}
     data_bindings:
     - {property: text, code: 'self.item[''description'']', writeback: true}
   - type: Label
-    properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: 'Attachment:', font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {role: input-prompt, align: left, tooltip: '', border: '', foreground: '', visible: true, text: 'Attachment:', font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: ''}
     name: label_5
     layout_properties: {grid_position: 'BPFJWG,RCSMWG'}
   - type: FileLoader
@@ -134,24 +116,17 @@ components:
     name: message_pill_1
     layout_properties: {grid_position: 'BPFJWG,JVGCSY AATGQB,NOVIEL'}
   - type: FlowPanel
-    properties: {role: null, spacing: medium, align: right, tooltip: '', border: '',
-      foreground: '', visible: true, spacing_above: none, spacing_below: none, background: ''}
+    properties: {role: null, spacing: medium, align: right, tooltip: '', border: '', foreground: '', visible: true, spacing_above: none, spacing_below: none, background: ''}
     name: flow_panel_1
     layout_properties: {grid_position: 'JSCBTN,AIQRTR'}
     components:
     - type: Button
-      properties: {role: null, align: right, tooltip: '', border: '', enabled: true,
-        foreground: '', visible: true, text: Save, font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
+      properties: {role: null, align: right, tooltip: '', border: '', enabled: true, foreground: '', visible: true, text: Save, font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: ''}
       name: save_button
       layout_properties: {grid_position: 'JSCBTN,XLTHLD'}
       event_bindings: {click: save_button_click}
     - type: Button
-      properties: {role: null, align: right, tooltip: '', border: '', enabled: true,
-        foreground: '', visible: true, text: Cancel, font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
+      properties: {role: null, align: right, tooltip: '', border: '', enabled: true, foreground: '', visible: true, text: Cancel, font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: ''}
       name: cancel_button
       layout_properties: {grid_position: 'JSCBTN,CSKDYO'}
       event_bindings: {click: cancel_button_click}
