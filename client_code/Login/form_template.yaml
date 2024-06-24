@@ -1,109 +1,36 @@
 container:
   type: ColumnPanel
-  properties: { col_widths: "{}" }
+  properties: {col_widths: '{}'}
 components:
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true, wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"GGRAUP":15,"RUQNVX":30,"BUPWQC":15}', spacing_below: small, background: ''}
+  name: column_panel_1
+  layout_properties: {grid_position: 'HMSLJI,ZSISPI', full_width_row: true}
+  components:
+  - type: Spacer
+    properties: {visible: true, spacing_above: small, spacing_below: small, height: 78, tooltip: ''}
+    name: spacer_1
+    layout_properties: {grid_position: 'BCDVIA,PHMUQD', full_width_row: false}
+  - type: Spacer
+    properties: {height: 70}
+    name: spacer_3
+    layout_properties: {grid_position: 'AGPPGH,GGRAUP'}
   - type: ColumnPanel
-    properties:
-      {
-        role: null,
-        tooltip: "",
-        border: "",
-        foreground: "",
-        visible: true,
-        wrap_on: mobile,
-        col_spacing: medium,
-        spacing_above: small,
-        col_widths: '{"GGRAUP":15,"RUQNVX":30,"BUPWQC":15}',
-        spacing_below: small,
-        background: "",
-      }
-    name: column_panel_1
-    layout_properties: { grid_position: "HMSLJI,ZSISPI", full_width_row: true }
+    properties: {role: card-rounded-corners, tooltip: '', border: '', foreground: '', visible: true, wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}', spacing_below: small, background: ''}
+    name: card_1
+    layout_properties: {grid_position: 'AGPPGH,RUQNVX'}
     components:
-      - type: Spacer
-        properties:
-          {
-            visible: true,
-            spacing_above: small,
-            spacing_below: small,
-            height: 78,
-            tooltip: "",
-          }
-        name: spacer_1
-        layout_properties:
-          { grid_position: "BCDVIA,PHMUQD", full_width_row: false }
-      - type: Spacer
-        properties: { height: 70 }
-        name: spacer_3
-        layout_properties: { grid_position: "AGPPGH,GGRAUP" }
-      - type: ColumnPanel
-        properties:
-          {
-            role: card-rounded-corners,
-            tooltip: "",
-            border: "",
-            foreground: "",
-            visible: true,
-            wrap_on: mobile,
-            col_spacing: medium,
-            spacing_above: small,
-            col_widths: "{}",
-            spacing_below: small,
-            background: "",
-          }
-        name: card_1
-        layout_properties: { grid_position: "AGPPGH,RUQNVX" }
-        components:
-          - type: Label
-            properties:
-              {
-                role: title,
-                align: center,
-                tooltip: "",
-                border: "",
-                foreground: "",
-                visible: true,
-                text: Log in to ISO Document Tracking,
-                font_size: 25,
-                font: "",
-                spacing_above: medium,
-                icon_align: left,
-                spacing_below: small,
-                italic: false,
-                background: "",
-                bold: false,
-                underline: false,
-                icon: "",
-              }
-            name: label_1
-            layout_properties: { grid_position: "GGBZPP,BFMVLC" }
-          - type: Button
-            properties:
-              {
-                role: outlined,
-                align: center,
-                tooltip: "",
-                border: "",
-                enabled: true,
-                foreground: "",
-                visible: true,
-                text: Log In,
-                font_size: null,
-                font: "",
-                spacing_above: medium,
-                icon_align: left,
-                spacing_below: medium,
-                italic: false,
-                background: "",
-                bold: false,
-                underline: false,
-                icon: "fa:user",
-              }
-            name: button_1
-            layout_properties: { grid_position: "EXDMVU,VZQFKH" }
-            event_bindings: { click: button_1_click }
-      - type: Spacer
-        properties: { height: 105 }
-        name: spacer_2
-        layout_properties: { grid_position: "AGPPGH,BUPWQC" }
+    - type: Label
+      properties: {role: title, align: center, tooltip: '', border: '', foreground: '', visible: true, text: Log in to ISO Document Tracking, font_size: 25, font: '', spacing_above: medium, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: ''}
+      name: label_1
+      layout_properties: {grid_position: 'GGBZPP,BFMVLC'}
+    - type: Button
+      properties: {role: outlined, align: center, tooltip: '', border: '', enabled: true, foreground: '', visible: true, text: Log In, font_size: null, font: '', spacing_above: medium, icon_align: left, spacing_below: medium, italic: false, background: '', bold: false, underline: false, icon: 'fa:user'}
+      name: button_1
+      layout_properties: {grid_position: 'EXDMVU,VZQFKH'}
+      event_bindings: {click: button_1_click}
+  - type: Spacer
+    properties: {height: 105}
+    name: spacer_2
+    layout_properties: {grid_position: 'AGPPGH,BUPWQC'}
 is_package: true
